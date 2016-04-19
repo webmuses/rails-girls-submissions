@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419103207) do
+ActiveRecord::Schema.define(version: 20160419122625) do
 
   create_table "submissions", force: :cascade do |t|
     t.string   "full_name"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20160419103207) do
     t.integer  "age"
     t.string   "codeacademy_username"
     t.text     "description"
-    t.string   "experience"
     t.string   "english"
     t.string   "operating_system"
     t.boolean  "first_time"
@@ -27,6 +26,12 @@ ActiveRecord::Schema.define(version: 20160419103207) do
     t.text     "problems"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.string   "html"
+    t.string   "css"
+    t.string   "js"
+    t.string   "ror"
+    t.string   "db"
+    t.string   "programming_others"
   end
 
 end
