@@ -82,7 +82,9 @@
   </div>
   <div class="field">
     <%= f.label :operating_system %><br>
-    <%= f.text_field :operating_system %>
+    <%= f.radio_button :operating_system, :mac %>
+    <%= f.radio_button :operating_system, :linux %>
+    <%= f.radio_button :operating_system, :windows %>
   </div>
   <div class="field">
     <%= f.label :first_time %><br>
