@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  full_name: MyString
+  email: MyString
+  age: 1
+  codeacademy_username: MyString
+  description: MyText
+  experience: MyString
+  english: MyString
+  operating_system: MyString
+  first_time: false
+  goals: MyText
+  problems: MyText
+
+two:
+  full_name: MyString
+  email: MyString
+  age: 1
+  codeacademy_username: MyString
+  description: MyText
+  experience: MyString
+  english: MyString
+  operating_system: MyString
+  first_time: false
+  goals: MyText
+  problems: MyText

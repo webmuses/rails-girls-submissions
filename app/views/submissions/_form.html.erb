@@ -1,0 +1,61 @@
+<%= form_for(@submission) do |f| %>
+  <% if @submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+
+      <ul>
+      <% @submission.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :full_name %><br>
+    <%= f.text_field :full_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :codeacademy_username %><br>
+    <%= f.text_field :codeacademy_username %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :experience %><br>
+    <%= f.text_field :experience %>
+  </div>
+  <div class="field">
+    <%= f.label :english %><br>
+    <%= f.text_field :english %>
+  </div>
+  <div class="field">
+    <%= f.label :operating_system %><br>
+    <%= f.text_field :operating_system %>
+  </div>
+  <div class="field">
+    <%= f.label :first_time %><br>
+    <%= f.check_box :first_time %>
+  </div>
+  <div class="field">
+    <%= f.label :goals %><br>
+    <%= f.text_area :goals %>
+  </div>
+  <div class="field">
+    <%= f.label :problems %><br>
+    <%= f.text_area :problems %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

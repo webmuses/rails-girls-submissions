@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @submission.full_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @submission.email %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @submission.age %>
+</p>
+
+<p>
+  <strong>Codeacademy username:</strong>
+  <%= @submission.codeacademy_username %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @submission.description %>
+</p>
+
+<p>
+  <strong>Experience:</strong>
+  <%= @submission.experience %>
+</p>
+
+<p>
+  <strong>English:</strong>
+  <%= @submission.english %>
+</p>
+
+<p>
+  <strong>Operating system:</strong>
+  <%= @submission.operating_system %>
+</p>
+
+<p>
+  <strong>First time:</strong>
+  <%= @submission.first_time %>
+</p>
+
+<p>
+  <strong>Goals:</strong>
+  <%= @submission.goals %>
+</p>
+
+<p>
+  <strong>Problems:</strong>
+  <%= @submission.problems %>
+</p>
+
+<%= link_to 'Edit', edit_submission_path(@submission) %> |
+<%= link_to 'Back', submissions_path %>
