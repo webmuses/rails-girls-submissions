@@ -1,0 +1,171 @@
+body {
+  font-family: 'Lato';
+}
+
+:focus {
+  outline: none;
+}
+
+.wrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.upload {
+  background: #dddddd;
+  padding: 10px;
+}
+
+.button {
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  background: #1cbcaf;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: black;
+  }
+}
+
+button.rate.active {
+  background: green;
+  border: 2px solid green;
+}
+
+.prev {
+  border-right: 1px solid black;
+}
+
+.next {
+  border-left: 1px solid black;
+}
+
+.bottom {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.submission {
+  float: left;
+  width: 560px;
+  margin-right: 20px;
+}
+
+.rating, .navigation, .comments {
+  float: left;
+  width: 380px;
+}
+
+.rating {
+  margin-bottom: 20px;
+}
+
+.navigation {
+  margin: 20px 0;
+}
+
+.comments {
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  textarea, button {
+    display: block;
+  }
+
+  textarea {
+    line-height: 1.5;
+    padding: 8px;
+    font-size: .8rem;
+  }
+
+  button {
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+
+  .clear {
+    clear: both;
+  }
+}
+
+span.date {
+  font-size: 11px;
+  color: #555;
+}
+
+.comment-body {
+  margin-top: .25rem;
+  font-size: .8rem;
+}
+
+.submission > table {
+  border-collapse: collapse;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  font-size: 12px;
+  line-height: 135%;
+  font-family: 'Lucida Grande','Lucida Sans Unicode', Tahoma, sans-serif;
+  width: 560px;
+  padding: 22px 25px 25px 25px;
+
+  & > tr {
+    & > th {
+      vertical-align: top;
+      color: #222;
+      text-align: left;
+      padding: 7px 9px 7px 9px;
+      border-top: 1px solid #eee;
+    }
+
+    & > td {
+      vertical-align: top;
+      color: #333;
+      width: 60%;
+      padding: 7px 9px 7px 0;
+      border-top: 1px solid #eee;
+    }
+
+    &:nth-child(odd) {
+      background-color: #F5F5F5;
+    }
+
+    &:nth-child(even) {
+      background-color: #FFFFFF;
+    }
+  }
+}
+
+.submission-header {
+  padding: 0 0 10px 40px;
+  border-bottom: 1px dashed;
+  box-sizing: border-box;
+}
+
+.submission-header, .submission-list li {
+  width: 100%;
+}
+
+.submission-list li a {
+  display: inline-block;
+  padding: 0 .5rem .5rem;
+}
+
+.submission-header span, .submission-list li span {
+  display: inline-block;
+  width: 180px;
+}
+
+#submission-status {
+  font-weight: bold;
+  text-transform: uppercase;
+}
