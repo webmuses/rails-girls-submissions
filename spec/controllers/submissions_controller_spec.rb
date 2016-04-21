@@ -32,6 +32,10 @@ RSpec.describe SubmissionsController, type: :controller do
       it "shows form again" do
         expect(subject).to render_template(:new)
       end
+
+      it "does not save the new submission" do
+        expect{subject}.not_to change(Submission, :count)
+      end
     end
 
   end
