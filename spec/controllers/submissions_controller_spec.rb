@@ -25,7 +25,14 @@ RSpec.describe SubmissionsController, type: :controller do
         expect{subject}.to change(Submission, :count).by(1)
       end
     end
+
+    context "with invaild submission parameters" do
+      subject {post :create, submission: {full_name: "NN", email: "nn", age: 200}}
+
+      it "shows form again" do
+        expect(subject).to render_template(:new)
+      end
+    end
+
   end
-
-
 end
