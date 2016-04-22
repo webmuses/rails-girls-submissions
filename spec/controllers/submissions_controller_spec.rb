@@ -10,10 +10,10 @@ RSpec.describe SubmissionsController, type: :controller do
   end
 
   describe "POST #create" do
-    subject { post :create, submission: submissions }
+    subject { post :create, submission: submission_attributes }
 
     context "with vaild submission parameters" do
-      let(:submissions) do {
+      let(:submission_attributes) do {
         full_name: "Jan Kowalski",
         email: "kowalski@domain.com",
         age: 20,
@@ -38,11 +38,12 @@ RSpec.describe SubmissionsController, type: :controller do
 
       it "saves the new submission" do
         expect{subject}.to change(Submission, :count).by(1)
+        #TODO: is this solution recommended? 
       end
     end
 
     context "with invaild submission parameters" do
-      let(:submissions) do
+      let(:submission_attributes) do
         { full_name: "NN", email: "nn", age: 200 }
       end
 
