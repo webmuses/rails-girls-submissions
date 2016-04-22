@@ -32,13 +32,13 @@ RSpec.describe SubmissionsController, type: :controller do
         problems: "Allergic to dairy" }
       end
 
-      it "redirects to new submission" do
-        expect(subject).to redirect_to(assigns(:submission))
+      it "redirects to thank you page" do
+        expect(subject).to redirect_to("/submissions/thank_you")
       end
 
       it "saves the new submission" do
         expect{subject}.to change(Submission, :count).by(1)
-        #TODO: is this solution recommended? 
+        #TODO: is this solution recommended?
       end
     end
 
