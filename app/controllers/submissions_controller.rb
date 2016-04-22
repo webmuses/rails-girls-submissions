@@ -19,12 +19,15 @@ class SubmissionsController < ApplicationController
   def edit
   end
 
+  def thank_you
+  end
+
   # POST /submissions
   def create
     @submission = Submission.new(submission_params)
 
     if @submission.save
-      redirect_to @submission, notice: 'Submission was successfully created.'
+      redirect_to submissions_thank_you_url
     else
       render :new
     end
