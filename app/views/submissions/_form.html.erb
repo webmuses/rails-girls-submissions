@@ -32,7 +32,7 @@
     <%= f.text_area :description %>
   </div>
 
-  <% SKILLS.each do |skill| %>
+  <% Submission::SKILLS.each do |skill| %>
     <div class="field">
       <%= f.label skill %><br>
       <%= f.radio_button skill, :never %>

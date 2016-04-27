@@ -5,4 +5,6 @@ class Submission < ActiveRecord::Base
   validates :age, numericality: { greater_than: 0, less_than: 110 }
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
+  SKILLS = ['html', 'css', 'js', 'ror', 'db', 'programming_others']
+
 end
