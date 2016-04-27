@@ -10,26 +10,12 @@ RSpec.describe SubmissionsController, type: :controller do
   end
 
   describe "POST #create" do
+    # subject { post :create, submission: submission_attributes }
     subject { post :create, submission: submission_attributes }
 
     context "with vaild submission parameters" do
-      let(:submission_attributes) do {
-        full_name: "Jan Kowalski",
-        email: "kowalski@domain.com",
-        age: 20,
-        codeacademy_username: "jan_kowalski",
-        description: "I want to be a programmer!/n I want to be a programmer!",
-        html: :used,
-        css: :used,
-        js: :used,
-        ror: :used,
-        db: :used,
-        programming_others: :used,
-        english: :basic,
-        operating_system: :mac,
-        first_time: true,
-        goals: "Job as a developer/n",
-        problems: "Allergic to dairy" }
+      let(:submission_attributes) do
+         FactoryGirl.attributes_for(:submission)
       end
 
       it "redirects to thank you page" do
