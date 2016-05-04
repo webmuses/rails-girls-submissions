@@ -31,48 +31,16 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :html %><br>
-    <%= f.radio_button :html, :never %>
-    <%= f.radio_button :html, :heard %>
-    <%= f.radio_button :html, :used %>
-    <%= f.radio_button :html, :fluent %>
-  </div>
-  <div class="field">
-    <%= f.label :css %><br>
-    <%= f.radio_button :css, :never %>
-    <%= f.radio_button :css, :heard %>
-    <%= f.radio_button :css, :used %>
-    <%= f.radio_button :css, :fluent %>
-  </div>
-  <div class="field">
-    <%= f.label :js %><br>
-    <%= f.radio_button :js, :never %>
-    <%= f.radio_button :js, :heard %>
-    <%= f.radio_button :js, :used %>
-    <%= f.radio_button :js, :fluent %>
-  </div>
-  <div class="field">
-    <%= f.label :ror %><br>
-    <%= f.radio_button :ror, :never %>
-    <%= f.radio_button :ror, :heard %>
-    <%= f.radio_button :ror, :used %>
-    <%= f.radio_button :ror, :fluent %>
-  </div>
-  <div class="field">
-    <%= f.label :db %><br>
-    <%= f.radio_button :db, :never %>
-    <%= f.radio_button :db, :heard %>
-    <%= f.radio_button :db, :used %>
-    <%= f.radio_button :db, :fluent %>
-  </div>
-  <div class="field">
-    <%= f.label :programming_others %><br>
-    <%= f.radio_button :programming_others, :never %>
-    <%= f.radio_button :programming_others, :heard %>
-    <%= f.radio_button :programming_others, :used %>
-    <%= f.radio_button :programming_others, :fluent %>
-  </div>
+
+  <% Submission::SKILLS.each do |skill| %>
+    <div class="field">
+      <%= f.label skill %><br>
+      <%= f.radio_button skill, :never %>
+      <%= f.radio_button skill, :heard %>
+      <%= f.radio_button skill, :used %>
+      <%= f.radio_button skill, :fluent %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :english %><br>

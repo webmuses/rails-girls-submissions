@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/submissions/thank_you", to: "submissions#thank_you"
+
   resources :submissions
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
