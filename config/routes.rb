@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
   get "/submissions/thank_you", to: "submissions#thank_you"
 
+  # devise_for :users, :skip => [:sessions], :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :skip => [:passwords, :registrations], :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  # as :user do
+  #   get "/user" => "devise/sessions#new", :as => :new_user_session
+  #   post "/user" => "devise/sessions#create", :as => :user_session
+  # end
+  #
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
+
   resources :submissions
+  # devise_for :users, skip: [:password], :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  # resources :submissions
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -10,6 +10,7 @@ Things you may want to cover:
 * System dependencies
 
 * Configuration
+  copy secrets.yml.example file into secrets.yml and change app_id, app_secret.
 
 * Database creation
 
