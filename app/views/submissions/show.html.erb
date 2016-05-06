@@ -80,5 +80,12 @@
   <%= @submission.problems %>
 </p>
 
+<%= button_to "0", submission_rate_path(@submission) %>
+<%= button_to "1", submission_rate_path(@submission) %>
+<%= button_to "2", submission_rate_path(@submission) %>
+<%= button_to "3", submission_rate_path(@submission) %>
+<%= button_to "4", submission_rate_path(@submission) %>
+<%= button_to "5", submission_rate_path(@submission) %>
+
 <%= link_to 'Edit', edit_submission_path(@submission) %> |
 <%= link_to 'Back', submissions_path %>
