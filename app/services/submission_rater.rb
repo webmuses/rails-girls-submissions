@@ -1,5 +1,4 @@
 class SubmissionRater
-  def rate
-
+  def rate(params)
   end
 end
