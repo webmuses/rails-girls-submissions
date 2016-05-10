@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  # before_action :authenticate_user!, :except => [:new, :create, :thank_you]
 
   # GET /submissions
   def index
@@ -35,6 +36,7 @@ class SubmissionsController < ApplicationController
 
   # PATCH/PUT /submissions/1
   def update
+    byebug
     if @submission.update(submission_params)
         redirect_to @submission, notice: 'Submission was successfully updated.'
     else

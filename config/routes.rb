@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get "/submissions/thank_you", to: "submissions#thank_you"
 
   devise_for :users, :skip => [:passwords, :registrations], :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  
+
   devise_scope :user do
     root to: "devise/sessions#new"
   end
