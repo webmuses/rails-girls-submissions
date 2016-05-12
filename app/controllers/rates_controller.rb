@@ -1,5 +1,4 @@
 class RatesController < ApplicationController
-  # before_action :authenticate_user!
 
   def create
     submission_rater = SubmissionRater.new
