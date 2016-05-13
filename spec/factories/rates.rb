@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :rate do
-    rate 1
+    value 1
   end
 end
