@@ -71,6 +71,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-screenshot (1.0.12)
+      capybara (>= 1.0, < 3)
+      launchy
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -111,6 +114,8 @@ GEM
     json (1.8.3)
     jwt (1.5.1)
     kgio (2.10.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -259,6 +264,7 @@ DEPENDENCIES
   capistrano-rvm
   capistrano3-unicorn
   capybara
+  capybara-screenshot
   coffee-rails (~> 4.1.0)
   devise
   factory_girl_rails (~> 4.0)

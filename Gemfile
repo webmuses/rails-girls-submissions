@@ -48,6 +48,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
 
   gem 'capybara'
+  gem 'capybara-screenshot'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'awesome_print'
