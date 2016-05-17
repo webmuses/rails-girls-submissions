@@ -21,7 +21,7 @@ describe "the rating process" do
   before :each do
     @submission = FactoryGirl.create(:submission)
     user = FactoryGirl.create(:user)
-    login_as(user, :scope => :user)
+    login_as(user, scope: :user)
   end
 
   it "visits submission page, finds and clicks rate button" do
