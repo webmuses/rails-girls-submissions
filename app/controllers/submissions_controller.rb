@@ -36,7 +36,6 @@ class SubmissionsController < ApplicationController
 
   # PATCH/PUT /submissions/1
   def update
-    byebug
     if @submission.update(submission_params)
         redirect_to @submission, notice: 'Submission was successfully updated.'
     else
