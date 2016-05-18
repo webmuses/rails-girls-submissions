@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users, skip: [:passwords, :registrations], :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  root 'submissions#index'
+  root 'submissions#new'
+
+  get "/admin", to: "submissions#index", path: :admin
 
   resources :submissions do
     resource :rate, only: :create
