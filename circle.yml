@@ -1,0 +1,11 @@
+machine:
+  ruby:
+    version: 2.3.0
+checkout:
+  post:
+    - cp config/secrets.yml.example config/secrets.yml
+deployment:
+  demo:
+    branch: master
+    commands:
+        - bundle exec cap demo deploy
