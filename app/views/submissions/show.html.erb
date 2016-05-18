@@ -80,5 +80,9 @@
   <%= @submission.problems %>
 </p>
 
+<% (0..5).each do |rate| %>
+  <%= button_to rate, submission_rate_path(@submission), params: {value: rate} %>
+<% end %>
+
 <%= link_to 'Edit', edit_submission_path(@submission) %> |
 <%= link_to 'Back', submissions_path %>

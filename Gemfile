@@ -42,14 +42,16 @@ end
 group :development, :test do
 # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
 
   gem "factory_girl_rails", "~> 4.0"
 
   gem 'capybara'
+  gem 'capybara-screenshot'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'awesome_print'
 end
 
 group :development do

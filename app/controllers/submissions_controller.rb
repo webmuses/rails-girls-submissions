@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:new, :create, :thank_you]
 
   # GET /submissions
   def index
