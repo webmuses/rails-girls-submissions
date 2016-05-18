@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510115344) do
+ActiveRecord::Schema.define(version: 20160518104900) do
 
   create_table "rates", force: :cascade do |t|
     t.datetime "created_at",    null: false
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20160510115344) do
     t.string   "db"
     t.string   "programming_others"
   end
+
+  add_index "submissions", ["email"], name: "index_submissions_on_email", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",              default: "", null: false
