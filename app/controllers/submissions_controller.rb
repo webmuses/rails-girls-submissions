@@ -1,5 +1,5 @@
 class SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :set_submission, only: [:show, :edit, :destroy]
   skip_before_action :authenticate_user!, only: [:new, :create, :thank_you]
 
   # GET /submissions
@@ -21,6 +21,15 @@ class SubmissionsController < ApplicationController
   end
 
   def thank_you
+  end
+
+  def rated
+  end
+
+  def to_rate
+  end
+
+  def rejected
   end
 
   # POST /submissions
