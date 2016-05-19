@@ -1,5 +1,5 @@
 class SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:show, :edit, :destroy]
+  before_action :set_submission, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:new, :create, :thank_you]
 
   # GET /submissions
@@ -24,6 +24,7 @@ class SubmissionsController < ApplicationController
   end
 
   def rated
+    @submissions_rated = Submission.joins(:rates).group(:submission_id).having('count(*)= ?', 3)
   end
 
   def to_rate
