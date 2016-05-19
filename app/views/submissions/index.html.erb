@@ -1,26 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Submissions</h1>
+<h1>All submissions</h1>
 
 <table>
   <thead>
     <tr>
       <th>Full name</th>
-      <th>Email</th>
       <th>Age</th>
-      <th>Codeacademy username</th>
-      <th>Description</th>
-      <th>HTML</th>
-      <th>CSS</th>
-      <th>JavaScript</th>
-      <th>Ruby on Rails</th>
-      <th>Databases</th>
-      <th>Any other programming languages</th>
-      <th>English</th>
-      <th>Operating system</th>
-      <th>First time</th>
-      <th>Goals</th>
-      <th>Problems</th>
+      <th>Average rate</th>
+      <th>Rates count</th>
+      <th>Registration date</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -29,21 +18,10 @@
     <% @submissions.each do |submission| %>
       <tr>
         <td><%= submission.full_name %></td>
-        <td><%= submission.email %></td>
         <td><%= submission.age %></td>
-        <td><%= submission.codeacademy_username %></td>
-        <td><%= submission.description %></td>
-        <td><%= submission.html %></td>
-        <td><%= submission.css %></td>
-        <td><%= submission.js %></td>
-        <td><%= submission.ror %></td>
-        <td><%= submission.db %></td>
-        <td><%= submission.programming_others %></td>
-        <td><%= submission.english %></td>
-        <td><%= submission.operating_system %></td>
-        <td><%= submission.first_time %></td>
-        <td><%= submission.goals %></td>
-        <td><%= submission.problems %></td>
+        <td><%=  %></td>
+        <td><%=  %></td>
+        <td><%= submission.created_at %></td>
         <td><%= link_to 'Show', submission %></td>
         <td><%= link_to 'Edit', edit_submission_path(submission) %></td>
         <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
