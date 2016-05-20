@@ -9,5 +9,5 @@ class Submission < ActiveRecord::Base
   has_many :rates
 
   SKILLS = ['html', 'css', 'js', 'ror', 'db', 'programming_others']
-
+  REQUIRED_RATES_NUM = 3
 end
