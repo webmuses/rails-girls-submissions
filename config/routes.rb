@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "/admin", to: "submissions#index", path: :admin
 
-  resources :submissions do
+  resources :submissions, except: [:edit, :update] do
     resource :rate, only: :create
   end
 
