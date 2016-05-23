@@ -20,15 +20,15 @@ class SubmissionsController < ApplicationController
   end
 
   def rated
-    @submissions_rated = Submission.where(rejected: false).joins(:rates).group(:id).having('count(*) >= ?', Submission::REQUIRED_RATES_NUM)
+    @submissions_rated = Submission.rated
   end
 
   def to_rate
-    @submissions_to_rate = Submission.where(rejected: false).joins("LEFT JOIN 'rates' ON submissions.id = rates.submission_id").group(:id).having('count(*) < ?', Submission::REQUIRED_RATES_NUM)
+    @submissions_to_rate = Submission.to_rate
   end
 
   def rejected
-    @submissions_rejected = Submission.where(rejected: true)
+    @submissions_rejected = Submission.rejected
   end
 
   # POST /submissions

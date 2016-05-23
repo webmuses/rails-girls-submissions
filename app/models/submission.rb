@@ -10,4 +10,8 @@ class Submission < ActiveRecord::Base
 
   SKILLS = ['html', 'css', 'js', 'ror', 'db', 'programming_others']
   REQUIRED_RATES_NUM = 3
+
+  scope :rejected, -> { where(rejected: true) }
+  scope :rated, -> { where(rejected: false).joins(:rates).group(:id).having('count(*) >= ?', Submission::REQUIRED_RATES_NUM)}
+  scope :to_rate, -> { where(rejected: false).joins("LEFT JOIN 'rates' ON submissions.id = rates.submission_id").group(:id).having('count(*) < ?', Submission::REQUIRED_RATES_NUM) }
 end
