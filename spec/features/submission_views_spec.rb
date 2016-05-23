@@ -8,7 +8,6 @@ describe "testing submissions views:" do
   let!(:submissions_rated) { FactoryGirl.create(:submission, :with_rates, full_name: "Applicant Rated") }
   let!(:submission_rejected) { FactoryGirl.create(:submission, rejected: true, full_name: "Applicant Rejected") }
 
-
   it "moves to to_rate view" do
     login_as(user, scope: :user)
     visit submissions_path
