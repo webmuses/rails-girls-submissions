@@ -33,15 +33,9 @@ gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-group :production do
-
-  gem 'pg'
-
-end
+gem 'pg'
 
 group :development, :test do
-# Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'database_cleaner'
