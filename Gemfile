@@ -44,7 +44,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
-
+  gem 'database_cleaner'
   gem "factory_girl_rails", "~> 4.0"
 
   gem 'capybara'

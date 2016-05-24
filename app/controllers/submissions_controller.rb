@@ -1,5 +1,5 @@
 class SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :set_submission, only: [:show, :destroy]
   skip_before_action :authenticate_user!, only: [:new, :create, :thank_you]
 
   # GET /submissions
@@ -16,11 +16,19 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new
   end
 
-  # GET /submissions/1/edit
-  def edit
+  def thank_you
   end
 
-  def thank_you
+  def rated
+    @submissions_rated = Submission.rated
+  end
+
+  def to_rate
+    @submissions_to_rate = Submission.to_rate
+  end
+
+  def rejected
+    @submissions_rejected = Submission.rejected
   end
 
   # POST /submissions
@@ -31,15 +39,6 @@ class SubmissionsController < ApplicationController
       redirect_to submissions_thank_you_url
     else
       render :new
-    end
-  end
-
-  # PATCH/PUT /submissions/1
-  def update
-    if @submission.update(submission_params)
-        redirect_to @submission, notice: 'Submission was successfully updated.'
-    else
-      render :edit
     end
   end
 

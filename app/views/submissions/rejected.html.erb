@@ -1,28 +1,22 @@
-<!-- <p id="notice"><%= notice %></p> -->
-
 <%= render 'layouts/header.html.erb' %>
 
-<h1>All submissions</h1>
+<h1>Rejected</h1>
 
 <table>
   <thead>
     <tr>
       <th>Full name</th>
       <th>Age</th>
-      <th>Average rate</th>
-      <th>Rates count</th>
       <th>Registration date</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @submissions.each do |submission| %>
+    <% @submissions_rejected.each do |submission| %>
       <tr>
         <td><%= submission.full_name %></td>
         <td><%= submission.age %></td>
-        <td><%= %></td>
-        <td><%= submission.rates.count %></td>
         <td><%= submission.created_at %></td>
         <td><%= link_to 'Show', submission %></td>
       </tr>

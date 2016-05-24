@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   get "/submissions/thank_you", to: "submissions#thank_you"
+  get "/submissions/rated", to: "submissions#rated"
+  get "/submissions/to_rate", to: "submissions#to_rate"
+  get "/submissions/rejected", to: "submissions#rejected"
 
   devise_for :users, skip: [:passwords, :registrations], :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
@@ -7,7 +10,7 @@ Rails.application.routes.draw do
 
   get "/admin", to: "submissions#index", path: :admin
 
-  resources :submissions do
+  resources :submissions, except: [:edit, :update] do
     resource :rate, only: :create
   end
 

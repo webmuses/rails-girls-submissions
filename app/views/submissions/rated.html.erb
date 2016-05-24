@@ -1,8 +1,6 @@
-<!-- <p id="notice"><%= notice %></p> -->
-
 <%= render 'layouts/header.html.erb' %>
 
-<h1>All submissions</h1>
+<h1>Rated</h1>
 
 <table>
   <thead>
@@ -17,7 +15,7 @@
   </thead>
 
   <tbody>
-    <% @submissions.each do |submission| %>
+    <% @submissions_rated.each do |submission| %>
       <tr>
         <td><%= submission.full_name %></td>
         <td><%= submission.age %></td>

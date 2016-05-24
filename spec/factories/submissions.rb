@@ -16,5 +16,16 @@ FactoryGirl.define do
     ror :heard
     db :never
     programming_others :heard
+    rejected false
+
+    trait :with_rates do
+      transient do
+        rates_count Submission::REQUIRED_RATES_NUM
+      end
+
+      after(:create) do |submission, evaluator|
+        create_list(:rate, evaluator.rates_count, submission: submission)
+      end
+    end
   end
 end
