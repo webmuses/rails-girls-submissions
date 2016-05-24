@@ -20,23 +20,20 @@ RSpec.describe Submission, type: :model do
   end
 
   context "scopes" do
-    before(:all) do
-      @rejected_submission = FactoryGirl.create(:submission, rejected: true)
-      @to_rate_submission = FactoryGirl.create(:submission)
-      @rated_submission = FactoryGirl.create(:submission, :with_rates)
-    end
+    let!(:rejected_submission) { FactoryGirl.create(:submission, rejected: true) }
+    let!(:to_rate_submission) { FactoryGirl.create(:submission) }
+    let!(:rated_submission) { FactoryGirl.create(:submission, :with_rates) }
 
     it "should only return rejected submissions" do
-      expect(Submission.rejected).to eq [@rejected_submission]
+      expect(Submission.rejected).to eq [rejected_submission]
     end
 
     it "should only return submissions to rate" do
-      expect(Submission.to_rate).to eq [@to_rate_submission]
+      expect(Submission.to_rate).to eq [to_rate_submission]
     end
 
     it "should only return rated submissions" do
-      expect(Submission.rated).to eq [@rated_submission]
+      expect(Submission.rated).to eq [rated_submission]
     end
-
   end
 end
