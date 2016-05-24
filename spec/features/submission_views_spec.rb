@@ -1,6 +1,3 @@
-include Warden::Test::Helpers
-Warden.test_mode!
-
 describe "testing submissions views:" do
 
   let!(:user) { FactoryGirl.create(:user) }
@@ -32,5 +29,3 @@ describe "testing submissions views:" do
     expect(page).to have_selector('td', text: "Applicant Rejected")
   end
 end
-
-Warden.test_reset!

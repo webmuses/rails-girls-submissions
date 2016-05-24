@@ -19,7 +19,6 @@ FactoryGirl.define do
     rejected false
 
     trait :with_rates do
-
       transient do
         rates_count Submission::REQUIRED_RATES_NUM
       end
