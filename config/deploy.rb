@@ -50,7 +50,7 @@ set :keep_releases, 5
 set :linked_files, %w{config/database.yml config/unicorn.rb config/secrets.yml}
 set :linked_dirs, %w{pids log public/assets}
 
-after "deploy:publishing", "unicorn:restart"
+after "deploy:publishing", "unicorn:stop", "unicorn:start"
 after "deploy:finishing",  "deploy:cleanup"
 
 # Sidekiq with god. See more info here:
