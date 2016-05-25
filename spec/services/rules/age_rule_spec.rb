@@ -7,5 +7,11 @@ RSpec.describe Rules::AgeRule do
       submission = FactoryGirl.create(:submission, age: 15)
       expect(age_rule.broken?(submission)).to equal(true)
     end
+
+    it 'returns false when age is 18 or above' do
+      age_rule = Rules::AgeRule.new
+      submission = FactoryGirl.create(:submission, age: 18)
+      expect(age_rule.broken?(submission)).to equal(false)
+    end
   end
 end

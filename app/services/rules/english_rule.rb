@@ -1,7 +1,5 @@
 class Rules::EnglishRule
   def broken?(submission)
-    if submission.english == "none"
-      true
-    end
+    submission.english == "none" ? true : false
   end
 end

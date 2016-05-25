@@ -1,7 +1,5 @@
 class Rules::AgeRule
   def broken?(submission)
-    if submission.age < 18
-      true
-    end
+    submission.age < 18 ? true : false
   end
 end
