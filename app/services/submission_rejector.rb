@@ -4,16 +4,16 @@ class SubmissionRejector
   end
 
   def reject?(submission_id)
-      reject = false
-      submission = Submission.find(Integer(submission_id))
+    reject = false
+    submission = Submission.find(Integer(submission_id))
 
-      @rules.each do |rule|
-        if rule.broken?(submission)
-          reject = true
-          break
-        end
+    @rules.each do |rule|
+      if rule.broken?(submission)
+        reject = true
+        break
       end
+    end
 
-      reject
+    reject
   end
 end
