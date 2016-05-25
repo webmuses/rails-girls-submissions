@@ -36,6 +36,13 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new(submission_params)
 
     if @submission.save
+      rules = [Rules::AgeRule.new, Rules::EnglishRule.new, Rules::FirstTimeRule.new, Rules::RorRule.new]
+      submission_rejector = SubmissionRejector.new(rules)
+      if submission_rejector.reject?(@submission.id)
+        @submission.rejected = true
+        @submission.save
+      end
+
       redirect_to submissions_thank_you_url
     else
       render :new
