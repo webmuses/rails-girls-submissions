@@ -1,0 +1,66 @@
+$input-height: $bs2;
+
+.form-field {
+  margin-bottom: $input-height;
+
+  > label,
+  > legend {
+    display: block;
+    margin-bottom: $bs-2;
+    color: $rg-navy;
+    font-weight: 700;
+  }
+
+  textarea,
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  input[type="number"] {
+    width: 100%;
+    display: block;
+    line-height: $input-height;
+    padding: 0 $bs-1;
+  }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-right: $bs-1;
+  }
+}
+
+textarea {
+  height: 8 * $input-height;
+  resize: none;
+}
+
+.textarea-small {
+  height: 4 * $input-height;
+}
+
+.form-field-collection {
+  padding: 0;
+  border: none;
+
+  div {
+    padding-left: $bs1;
+    line-height: $bs1;
+  }
+
+  label {
+    vertical-align: middle;
+  }
+}
+
+.form-field-boolean {
+  border-top: 1px dotted $rg-navy;
+  border-bottom: 1px dotted $rg-navy;
+  padding: $baseline 0;
+
+  label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+  }
+}
+
+
