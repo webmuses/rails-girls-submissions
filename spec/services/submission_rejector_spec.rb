@@ -16,8 +16,9 @@ RSpec.describe SubmissionRejector do
 
     context "when no rules are broken" do
       let!(:rules) { [Rules::EnglishRule.new, Rules::RorRule.new] }
-      let!(:submission) { FactoryGirl.create(:submission,
-         english: "fluent", ror: "heard") }
+      let!(:submission) do
+         FactoryGirl.create(:submission, english: "fluent", ror: "heard")
+       end
 
       it "doesn't reject the submission" do
         subject.reject_if_any_rules_broken(submission)
@@ -27,8 +28,9 @@ RSpec.describe SubmissionRejector do
 
     context "when some rules are broken" do
       let!(:rules) { [Rules::EnglishRule.new, Rules::AgeRule.new] }
-      let!(:submission) { FactoryGirl.create(:submission,
-         english: "none", age: 20) }
+      let!(:submission) do
+        FactoryGirl.create(:submission, english: "none", age: 20)
+      end
 
       it "rejects the submission" do
         subject.reject_if_any_rules_broken(submission)
