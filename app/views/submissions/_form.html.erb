@@ -1,9 +1,9 @@
 <%= form_for(@submission, html: { class: "form" }) do |f| %>
   <% if @submission.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+    <div class="form-error-box">
+      <h2 class="form-error-header"><%= pluralize(@submission.errors.count, "field") %> need to be corrected</h2>
 
-      <ul>
+      <ul class="form-error-list">
       <% @submission.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -99,7 +99,7 @@
     <%= f.label :problems %>
     <%= f.text_area :problems, class: "textarea-small" %>
   </div>
-  <div class="actions">
+  <div class="form-field">
     <%= f.submit %>
   </div>
 <% end %>

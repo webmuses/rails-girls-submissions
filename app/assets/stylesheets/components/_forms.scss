@@ -1,7 +1,15 @@
 $input-height: $bs2;
 
+.form-header {
+  text-align: center;
+}
+
 .form-field {
   margin-bottom: $input-height;
+
+  &:last-of-type {
+    margin-bottom: $bs4;
+  }
 
   > label,
   > legend {
@@ -20,21 +28,33 @@ $input-height: $bs2;
     display: block;
     line-height: $input-height;
     padding: 0 $bs-1;
+    border: 1px solid #ccc;
+    font-size: inherit;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $rg-navy;
+
+    }
   }
 
   input[type="radio"],
   input[type="checkbox"] {
     margin-right: $bs-1;
   }
-}
 
-textarea {
-  height: 8 * $input-height;
-  resize: none;
-}
+  input[type="submit"] {
+    margin: $bs1 auto;
+  }
 
-.textarea-small {
-  height: 4 * $input-height;
+  textarea {
+    height: 8 * $input-height;
+    resize: none;
+  }
+
+  .textarea-small {
+    height: 2 * $input-height;
+  }
 }
 
 .form-field-collection {
@@ -63,4 +83,39 @@ textarea {
   }
 }
 
+/* styles for errors in forms */
+
+.form-error-box {
+  margin: $bs1 0;
+  padding: 0 $bs1;
+  border: 1px dotted $rg-red;
+}
+
+.form-error-header {
+  text-align: center;
+}
+
+.form-error-list {
+  padding-left: $bs2;
+  list-style-type: square;
+}
+
+.field_with_errors {
+
+  label {
+    color: $rg-red;
+  }
+
+  textarea,
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  input[type="number"] {
+    border: 1px solid $rg-red;
+
+    &:focus {
+      border: 1px solid $rg-red;
+    }
+  }
+}
 
