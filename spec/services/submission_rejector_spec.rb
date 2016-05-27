@@ -1,15 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe SubmissionRejector do
-  describe '#should_reject?' do
-    subject {described_class.new(rules).should_reject?(submission)}
+  describe '#reject_if_any_rules_broken' do
+    subject { described_class.new(rules) }
 
     context "when there are no rules" do
       let!(:rules) { [] }
       let!(:submission) { FactoryGirl.create(:submission) }
 
       it "doesn't reject the submission" do
-        expect(subject).to equal(false)
+        subject.reject_if_any_rules_broken(submission)
+        expect(submission.rejected).to equal(false)
       end
     end
 
@@ -19,7 +20,8 @@ RSpec.describe SubmissionRejector do
          english: "fluent", ror: "heard") }
 
       it "doesn't reject the submission" do
-        expect(subject).to equal(false)
+        subject.reject_if_any_rules_broken(submission)
+        expect(submission.rejected).to equal(false)
       end
     end
 
@@ -29,17 +31,9 @@ RSpec.describe SubmissionRejector do
          english: "none", age: 20) }
 
       it "rejects the submission" do
-        expect(subject).to equal(true)
+        subject.reject_if_any_rules_broken(submission)
+        expect(submission.rejected).to equal(true)
       end
-    end
-  end
-
-  describe '#reject_if_needed' do
-    let!(:submission) { FactoryGirl.create(:submission, english: "none") }
-
-    it "sets rejected attribute to true" do
-      described_class.new.reject_if_needed(submission)
-      expect(submission.rejected).to equal(true)
     end
   end
 end

@@ -36,7 +36,7 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new(submission_params)
 
     if @submission.valid?
-      submission_rejector = SubmissionRejector.new.reject_if_needed(@submission)
+      submission_rejector = SubmissionRejector.new.reject_if_any_rules_broken(@submission)
       @submission.save
 
       redirect_to submissions_thank_you_url

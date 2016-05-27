@@ -22,4 +22,8 @@ class Submission < ActiveRecord::Base
       self.rates.length >= REQUIRED_RATES_NUM ? "rated" : "pending"
     end
   end
+
+  def reject
+    self.rejected = true
+  end
 end

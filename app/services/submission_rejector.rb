@@ -6,17 +6,13 @@ class SubmissionRejector
     @rules = rules
   end
 
-  def reject_if_needed(submission)
-    if should_reject?(submission)
-      reject(submission)
-    end
+  def reject_if_any_rules_broken(submission)
+    submission.reject if any_rules_broken?(submission)
   end
 
-  def should_reject?(submission)
+  private
+
+  def any_rules_broken?(submission)
     @rules.any? { |rule| rule.broken?(submission) }
-  end
-
-  def reject(submission)
-    submission.rejected = true
   end
 end
