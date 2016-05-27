@@ -13,16 +13,7 @@ class SubmissionRejector
   end
 
   def should_reject?(submission)
-    should_reject = false
-
-    @rules.each do |rule|
-      if rule.broken?(submission)
-        should_reject = true
-        break
-      end
-    end
-
-    should_reject
+    @rules.any? { |rule| rule.broken?(submission) }
   end
 
   def reject(submission)

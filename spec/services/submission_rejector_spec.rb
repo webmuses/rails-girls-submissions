@@ -34,11 +34,11 @@ RSpec.describe SubmissionRejector do
     end
   end
 
-  describe '#reject' do
-    let!(:submission) { FactoryGirl.create(:submission) }
+  describe '#reject_if_needed' do
+    let!(:submission) { FactoryGirl.create(:submission, english: "none") }
 
     it "sets rejected attribute to true" do
-      described_class.new.reject(submission)
+      described_class.new.reject_if_needed(submission)
       expect(submission.rejected).to equal(true)
     end
   end
