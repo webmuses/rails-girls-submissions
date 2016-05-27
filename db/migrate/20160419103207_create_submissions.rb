@@ -4,7 +4,7 @@ class CreateSubmissions < ActiveRecord::Migration
       t.string :full_name
       t.string :email
       t.integer :age
-      t.string :codeacademy_username
+      t.string :codecademy_username
       t.text :description
       t.string :experience
       t.string :english
