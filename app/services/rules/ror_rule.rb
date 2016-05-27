@@ -1,5 +1,5 @@
 class Rules::RorRule
   def broken?(submission)
-    submission.ror == 'fluent' ? true : false
+    submission.ror == 'fluent'
   end
 end

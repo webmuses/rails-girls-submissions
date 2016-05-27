@@ -1,5 +1,5 @@
 class Rules::FirstTimeRule
   def broken?(submission)
-    submission.first_time ? false : true
+    !submission.first_time
   end
 end
