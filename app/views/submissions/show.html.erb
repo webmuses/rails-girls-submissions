@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>ID:</strong>
+  <%= @submission.id %>
+</p>
+
+<p>
   <strong>Full name:</strong>
   <%= @submission.full_name %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%=  %>
+  <%= @submission.status %>
 </p>
 
 <p>
@@ -32,7 +37,7 @@
 
 <p>
   <strong>Codecademy url:</strong>
-  <%=  %>
+  <%= link_to "https://www.codecademy.com/#{@submission.codecademy_username}" %>
 </p>
 
 <p>
