@@ -9,3 +9,9 @@
      -moz-appearance: $appearance;
           appearance: $appearance;
 }
+
+@mixin media($min-width) {
+  @media (min-width: $min-width) {
+    @content;
+  }
+}
