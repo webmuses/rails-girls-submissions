@@ -6,6 +6,12 @@ class SubmissionRejector
     @rules = rules
   end
 
+  def reject_if_needed(submission)
+    if should_reject?(submission)
+      reject(submission)
+    end
+  end
+
   def should_reject?(submission)
     should_reject = false
 
