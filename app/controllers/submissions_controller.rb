@@ -62,7 +62,7 @@ class SubmissionsController < ApplicationController
 
     def submission_params
       params.require(:submission).permit(:full_name, :email, :age,
-      :codeacademy_username, :description, :html, :css, :js, :ror, :db,
+      :codecademy_username, :description, :html, :css, :js, :ror, :db,
       :programming_others, :english, :operating_system, :first_time, :goals,
       :problems)
     end
