@@ -1,0 +1,20 @@
+.form-submission-aside {
+  @include media($big-screen) {
+    position: fixed;
+    top: $bs2;
+    right: $bs2;
+  }
+
+  .form-aside-link {
+    display: block;
+
+    @include media($big-screen) {
+      width: 400px;
+      height: 400px;
+      margin-top: $bs1;
+      background: url('rails-girls-krakow-2016.png') no-repeat center bottom;
+      background-size: 100% auto;
+      color: transparent;
+    }
+  }
+}

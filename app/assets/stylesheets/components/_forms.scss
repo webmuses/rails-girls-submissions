@@ -1,0 +1,139 @@
+$input-height: $bs2;
+
+.form-header {
+  text-align: center;
+}
+
+.form-field {
+  margin-bottom: $input-height;
+
+  &:last-of-type {
+    margin-bottom: $bs4;
+  }
+
+  > label,
+  > legend {
+    display: block;
+    margin-bottom: $bs-2;
+    color: $rg-navy;
+    font-weight: 700;
+  }
+
+  textarea,
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  input[type="number"] {
+    width: 100%;
+    display: block;
+    line-height: $input-height;
+    padding: 0 $bs-1;
+    border: 1px solid #ccc;
+    font-size: inherit;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $rg-navy;
+
+    }
+  }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-right: $bs-1;
+  }
+
+  input[type="submit"] {
+    margin: $bs1 auto;
+  }
+
+  textarea {
+    height: 8 * $input-height;
+    resize: none;
+  }
+
+  .textarea-small {
+    height: 2 * $input-height;
+  }
+}
+
+.form-field-collection {
+  padding: 0;
+  border: none;
+
+  div {
+    padding-left: $bs1;
+    line-height: $bs1;
+  }
+
+  label {
+    vertical-align: middle;
+  }
+}
+
+.form-field-boolean {
+  border-top: 1px dotted $rg-navy;
+  border-bottom: 1px dotted $rg-navy;
+  padding: $baseline 0;
+
+  label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+  }
+}
+
+/* styles for errors in forms */
+
+.form-error-box {
+  margin: $bs1 0;
+  padding: 0 $bs1;
+  border: 1px dotted $rg-red;
+}
+
+.form-error-header {
+  text-align: center;
+}
+
+.form-error-list {
+  padding-left: $bs2;
+  list-style-type: square;
+}
+
+.field_with_errors {
+
+  label {
+    color: $rg-red;
+  }
+
+  textarea,
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  input[type="number"] {
+    border: 1px solid $rg-red;
+
+    &:focus {
+      border: 1px solid $rg-red;
+    }
+  }
+}
+
+/* styles for aside widget in forms */
+
+.form-aside {
+  text-align: center;
+  margin-bottom: $bs2;
+}
+
+.form-aside-text {
+  display: block;
+  color: $rg-red;
+  font-size: $baseline;
+
+  @include media($big-screen) {
+
+    font-size: $bs1;
+    font-weight: 400;
+  }
+}

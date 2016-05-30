@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2 {
+  color: $rg-red;
+}
+
+h1 {
+  font-size: $bs2;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: $bs1;
+  font-weight: 300;
+}

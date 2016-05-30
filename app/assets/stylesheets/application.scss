@@ -13,7 +13,16 @@
  *= require_self
  */
 
-@import "components/menu";
-@import "fonts";
-@import "styles";
-@import "form";
+@import 'config/normalize';
+@import 'config/variables';
+@import 'config/mixins';
+@import 'config/base';
+@import 'config/layout';
+
+@import 'components/buttons';
+@import 'components/rating-filters';
+@import 'components/forms';
+@import 'components/submissions';
+
+@import 'pages/submission-form-page';
+@import 'pages/thank-you-page';

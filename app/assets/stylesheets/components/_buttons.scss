@@ -1,0 +1,18 @@
+button,
+input[type="submit"] {
+  @include appearance(none);
+  display: block;
+  padding: $baseline $bs1;
+  background-color: $rg-red;
+  border: none;
+  font-size: $baseline;
+  color: white;
+  cursor: pointer;
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: background-color .4s;
+    background-color: lighten($rg-red, 10);
+  }
+}

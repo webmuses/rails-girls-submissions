@@ -1,0 +1,19 @@
+%wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.l-wrapper {
+  @extend %wrapper;
+  max-width: 1200px;
+}
+
+.l-wrapper-narrow {
+  @extend %wrapper;
+  max-width: 600px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
