@@ -1,4 +1,5 @@
 .form-submission-aside {
+
   @include media($big-screen) {
     position: fixed;
     top: $bs2;

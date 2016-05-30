@@ -1,108 +1,99 @@
 <%= render 'layouts/header' %>
-<p id="notice"><%= notice %></p>
+<div class="l-wrapper-narrow">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>ID:</strong>
-  <%= @submission.id %>
-</p>
+  <article class="l-submission-single">
+    <h1><%= @submission.full_name %> (<%= @submission.status %>)</h1>
 
-<p>
-  <strong>Full name:</strong>
-  <%= @submission.full_name %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">Email:</span>
+      <%= @submission.email %>
+    </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @submission.status %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">Age:</span>
+      <%= @submission.age %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @submission.email %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">Codecademy username:</span>
+      <%= @submission.codecademy_username %>
+    </p>
 
-<p>
-  <strong>Age:</strong>
-  <%= @submission.age %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">Codecademy status:</span>
+      <%= @submission.codecademy_status %>
+    </p>
 
-<p>
-  <strong>Codecademy username:</strong>
-  <%= @submission.codecademy_username %>
-</p>
+    <p class="submission-answer" class="submission-answer">
+      <span class="submission-answer-label">Codecademy url:</span>
+      <%= link_to "https://www.codecademy.com/#{@submission.codecademy_username}" %>
+    </p>
 
-<p>
-  <strong>Codecademy status:</strong>
-  <%= @submission.codecademy_status %>
-</p>
+    <p class="submission-answer submission-answer-block">
+      <span class="submission-answer-label">Description:</span>
+      <%= @submission.description %>
+    </p>
 
-<p>
-  <strong>Codecademy url:</strong>
-  <%= link_to "https://www.codecademy.com/#{@submission.codecademy_username}" %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">HTML:</span>
+      <%= @submission.html %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @submission.description %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">CSS:</span>
+      <%= @submission.css %>
+    </p>
 
-<p>
-  <strong>HTML:</strong>
-  <%= @submission.html %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">JavaScript:</span>
+      <%= @submission.js %>
+    </p>
 
-<p>
-  <strong>CSS:</strong>
-  <%= @submission.css %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">Ruby on Rails:</span>
+      <%= @submission.ror %>
+    </p>
 
-<p>
-  <strong>JavaScript:</strong>
-  <%= @submission.js %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">Databases:</span>
+      <%= @submission.db %>
+    </p>
 
-<p>
-  <strong>Ruby on Rails:</strong>
-  <%= @submission.ror %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">Any other programming languages:</span>
+      <%= @submission.programming_others %>
+    </p>
 
-<p>
-  <strong>Databases:</strong>
-  <%= @submission.db %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">English:</span>
+      <%= @submission.english %>
+    </p>
 
-<p>
-  <strong>Any other programming languages:</strong>
-  <%= @submission.programming_others %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">Operating system:</span>
+      <%= @submission.operating_system %>
+    </p>
 
-<p>
-  <strong>English:</strong>
-  <%= @submission.english %>
-</p>
+    <p class="submission-answer">
+      <span class="submission-answer-label">First time:</span>
+      <%= @submission.first_time ? "Yes" : "I took part in Rails Girls" %>
+    </p>
 
-<p>
-  <strong>Operating system:</strong>
-  <%= @submission.operating_system %>
-</p>
+    <p class="submission-answer submission-answer-block">
+      <span class="submission-answer-label">Goals:</span>
+      <%= @submission.goals %>
+    </p>
 
-<p>
-  <strong>First time:</strong>
-  <%= @submission.first_time %>
-</p>
+    <p class="submission-answer submission-answer-block">
+      <span class="submission-answer-label">Problems:</span>
+      <%= @submission.problems %>
+    </p>
 
-<p>
-  <strong>Goals:</strong>
-  <%= @submission.goals %>
-</p>
+    <% (0..5).each do |rate| %>
+      <%= button_to rate, submission_rate_path(@submission), params: {value: rate} %>
+    <% end %>
 
-<p>
-  <strong>Problems:</strong>
-  <%= @submission.problems %>
-</p>
-
-<% (0..5).each do |rate| %>
-  <%= button_to rate, submission_rate_path(@submission), params: {value: rate} %>
-<% end %>
-
-<%= link_to 'Back', submissions_path %>
+    <%= link_to 'Back', submissions_path %>
+  </article>
+</div>

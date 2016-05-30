@@ -1,0 +1,31 @@
+.l-submission-single {
+  margin-top: $bs3;
+}
+
+.submission-answer {
+  padding: $bs1;
+  margin: 0;
+  text-align: right;
+  border-bottom: 1px solid #ccc;
+
+  &:nth-of-type(even) {
+    background: #f0f0f0;
+  }
+
+  .submission-answer-label {
+    font-weight: 700;
+    float: left;
+  }
+}
+
+
+
+.submission-answer-block {
+  text-align: left;
+
+  .submission-answer-label {
+    display: block;
+    float: none;
+    margin-bottom: $bs1;
+  }
+}
