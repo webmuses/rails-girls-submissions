@@ -20,7 +20,7 @@
       <tr>
         <td><%= submission.full_name %></td>
         <td><%= submission.age %></td>
-        <td><%= %></td>
+        <td><%= submission.average_rate.round(2)%></td>
         <td><%= submission.rates.count %></td>
         <td><%= submission.created_at %></td>
         <td><%= link_to 'Show', submission %></td>

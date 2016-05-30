@@ -26,4 +26,8 @@ class Submission < ActiveRecord::Base
   def reject
     self.rejected = true
   end
+
+  def average_rate
+    self.rates.sum(:value).to_f  / self.rates.count
+  end
 end
