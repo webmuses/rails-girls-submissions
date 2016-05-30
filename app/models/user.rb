@@ -12,4 +12,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def user_allowed?
+    require 'yaml'
+
+    data = YAML.load_file "config/allowed_users.yml"
+    allowed_users = data["allowed_users"]
+    allowed_users.include?(self.email)
+  end
+
 end
