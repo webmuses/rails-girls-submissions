@@ -1,5 +1,4 @@
-button,
-input[type="submit"] {
+.btn {
   @include appearance(none);
   display: block;
   padding: $baseline $bs1;
@@ -15,4 +14,9 @@ input[type="submit"] {
     transition: background-color .4s;
     background-color: lighten($rg-red, 10);
   }
+}
+
+.btn-small {
+  @extend .btn;
+  padding: $bs-1 $baseline;
 }

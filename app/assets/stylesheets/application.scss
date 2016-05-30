@@ -20,9 +20,9 @@
 @import 'config/layout';
 
 @import 'components/buttons';
-@import 'components/rating-filters';
 @import 'components/forms';
-@import 'components/submissions';
+@import 'components/header';
 
 @import 'pages/submission-form-page';
+@import 'pages/submission-list-page';
 @import 'pages/thank-you-page';
