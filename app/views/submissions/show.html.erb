@@ -92,9 +92,11 @@
       <%= @submission.problems %>
     </p>
 
-    <% (0..5).each do |rate| %>
-      <%= button_to rate, submission_rate_path(@submission), params: {value: rate} %>
-    <% end %>
+    <aside class="aside-widget">
+      <% (0..5).each do |rate| %>
+        <%= button_to rate, submission_rate_path(@submission), params: {value: rate} %>
+      <% end %>
+    </aside>
 
     <%= link_to 'Back', submissions_path %>
   </article>

@@ -123,22 +123,3 @@ $input-height: $bs2;
     }
   }
 }
-
-/* styles for aside widget in forms */
-
-.form-aside {
-  text-align: center;
-  margin-bottom: $bs2;
-}
-
-.form-aside-text {
-  display: block;
-  color: $rg-red;
-  font-size: $baseline;
-
-  @include media($big-screen) {
-
-    font-size: $bs1;
-    font-weight: 400;
-  }
-}
