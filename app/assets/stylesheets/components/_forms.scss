@@ -1,5 +1,9 @@
 $input-height: $bs2;
 
+.form {
+  margin: 2 * $input-height 0;
+}
+
 .form-header {
   text-align: center;
   margin-bottom: 2 * $input-height;

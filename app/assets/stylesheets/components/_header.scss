@@ -1,8 +1,8 @@
 header {
   @include clearfix;
+  padding-top: $bs3;
 }
 
 .btn-logout {
   float: right;
-  margin-top: $bs2;
 }

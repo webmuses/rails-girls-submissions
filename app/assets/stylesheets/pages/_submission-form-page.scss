@@ -2,7 +2,7 @@
 
   @include media($big-screen) {
     position: fixed;
-    top: $bs2;
+    top: 2 * $bs2;
     right: $bs2;
   }
 
