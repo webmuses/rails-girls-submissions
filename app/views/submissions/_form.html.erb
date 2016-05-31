@@ -1,4 +1,5 @@
 <%= form_for(@submission, html: { class: "form" }) do |f| %>
+  <h1 class="form-header">Apply for Rails Girls workshop</h1>
   <% if @submission.errors.any? %>
     <div class="form-error-box">
       <h2 class="form-error-header"><%= pluralize(@submission.errors.count, "field") %> need to be corrected</h2>
