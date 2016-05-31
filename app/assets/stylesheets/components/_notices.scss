@@ -1,5 +1,4 @@
 #notice {
-  position: absolute;
   width: 100%;
   top: 0;
   margin: 0;
@@ -10,9 +9,7 @@
   background-color: $rg-red;
 
   @include media($tablet) {
-    position: relative;
     float: left;
     width: 400px;
-
   }
 }

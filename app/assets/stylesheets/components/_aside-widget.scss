@@ -1,0 +1,22 @@
+.aside-widget {
+  text-align: center;
+  margin: $bs2 0;
+  width: 400px;
+
+  @include media($big-screen) {
+    position: fixed;
+    top: 2 * $bs2;
+    right: 10%;
+  }
+}
+
+.aside-widget-text {
+  display: block;
+  color: $rg-red;
+  font-size: $baseline;
+
+  @include media($big-screen) {
+    font-size: $bs1;
+    font-weight: 400;
+  }
+}
