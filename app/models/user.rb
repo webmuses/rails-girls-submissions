@@ -11,5 +11,4 @@ class User < ActiveRecord::Base
       user.encrypted_password = Devise.friendly_token[0,20]
     end
   end
-
 end
