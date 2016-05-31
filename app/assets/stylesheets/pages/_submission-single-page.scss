@@ -2,6 +2,13 @@
   margin-top: $bs3;
 }
 
+.submission-header {
+  @include clearfix;
+  margin-bottom: $bs1;
+  word-break: break-all;
+  line-height: $bs3;
+}
+
 .submission-header-status {
   float: right;
   font-weight: 100;
