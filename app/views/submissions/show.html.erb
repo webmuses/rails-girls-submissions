@@ -3,7 +3,10 @@
   <p id="notice"><%= notice %></p>
 
   <article class="l-submission-single">
-    <h1><%= @submission.full_name %> (<%= @submission.status %>)</h1>
+    <h1>
+      <%= @submission.full_name %>
+      <span class="submission-header-status"><%= @submission.status %></span>
+    </h1>
 
     <p class="submission-answer">
       <span class="submission-answer-label">Email:</span>

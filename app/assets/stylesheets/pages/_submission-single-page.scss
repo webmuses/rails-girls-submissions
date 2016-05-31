@@ -2,6 +2,11 @@
   margin-top: $bs3;
 }
 
+.submission-header-status {
+  float: right;
+  font-weight: 100;
+}
+
 .submission-answer {
   padding: $bs1;
   margin: 0;
@@ -17,8 +22,6 @@
     float: left;
   }
 }
-
-
 
 .submission-answer-block {
   text-align: left;
