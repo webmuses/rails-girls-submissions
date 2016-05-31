@@ -97,7 +97,6 @@
 
   @include media($tablet) {
     width: 40%;
-    //min-width: 150px;
   }
 }
 
@@ -114,4 +113,6 @@
 
 .submission-body-name {
   text-align: left;
+  word-break: break-all;
+
 }
