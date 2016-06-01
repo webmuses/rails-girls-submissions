@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get "/submissions/thank_you", to: "submissions#thank_you"
+  get "/submissions/", to: "submissions#all"
   get "/submissions/rated", to: "submissions#rated"
   get "/submissions/to_rate", to: "submissions#to_rate"
   get "/submissions/rejected", to: "submissions#rejected"
@@ -8,9 +9,9 @@ Rails.application.routes.draw do
 
   root 'submissions#new'
 
-  get "/admin", to: "submissions#index", path: :admin
+  get "/admin", to: "submissions#all", path: :admin
 
-  resources :submissions, except: [:edit, :update] do
+  resources :submissions, except: [:edit, :update, :index] do
     resource :rate, only: :create
   end
 
