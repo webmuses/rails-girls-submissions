@@ -8,7 +8,7 @@
   color: white;
   background-color: $rg-red;
 
-  @include media($tablet) {
+  @include media($desktop) {
     float: left;
     width: 400px;
   }
