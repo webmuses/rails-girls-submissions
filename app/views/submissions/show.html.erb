@@ -101,3 +101,10 @@
     <%= link_to 'Back', submissions_path %>
   </article>
 </div>
+
+<% if Submission.rated.include?(@submission) %>
+  <% @submission.rates.each do |rate| %>
+    <%= print_nickname_and_value(rate) %>
+    </br>
+  <% end %>
+<% end %>
