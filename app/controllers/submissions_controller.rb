@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :destroy]
   skip_before_action :authenticate_user!, only: [:new, :create, :thank_you]
+  layout 'dashboard', only: [:index, :rated, :to_rate, :rejected]
 
   # GET /submissions
   def index
