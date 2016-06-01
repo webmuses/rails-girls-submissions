@@ -1,5 +1,9 @@
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "btn-small" %><br />
-  <% end -%>
-<% end -%>
+<div class="l-wrapper l-wrapper-narrow">
+  <article class="l-login-container">
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "btn-small" %><br />
+      <% end -%>
+    <% end -%>
+  </article>
+</div>
