@@ -1,22 +1,11 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :destroy]
   skip_before_action :authenticate_user!, only: [:new, :create, :thank_you]
+  layout 'dashboard', only: [:all, :rated, :to_rate, :rejected]
 
   # GET /submissions
-  def index
+  def all
     @submissions = Submission.all
-  end
-
-  # GET /submissions/1
-  def show
-  end
-
-  # GET /submissions/new
-  def new
-    @submission = Submission.new
-  end
-
-  def thank_you
   end
 
   def rated
@@ -29,6 +18,18 @@ class SubmissionsController < ApplicationController
 
   def rejected
     @submissions_rejected = Submission.rejected
+  end
+
+  # GET /submissions/1
+  def show
+  end
+
+  # GET /submissions/new
+  def new
+    @submission = Submission.new
+  end
+
+  def thank_you
   end
 
   # POST /submissions
