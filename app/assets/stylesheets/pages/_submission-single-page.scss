@@ -1,5 +1,9 @@
 .l-submission-single {
-  margin-top: $bs3;
+  margin-top: $bs1;
+
+  @include media($tablet) {
+    margin-top: $bs3;
+  }
 }
 
 .submission-header {

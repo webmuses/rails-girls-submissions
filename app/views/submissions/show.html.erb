@@ -1,6 +1,8 @@
 <%= render 'layouts/header' %>
 
+
 <div class="l-wrapper-narrow">
+  <%= link_to '← Back', submissions_path, class: "link-return" %>
   <article class="l-submission-single">
     <h1 class="submission-header">
       <%= @submission.full_name %>
@@ -97,7 +99,5 @@
         <%= button_to rate, submission_rate_path(@submission), params: {value: rate} %>
       <% end %>
     </aside>
-
-    <%= link_to 'Back', submissions_path %>
   </article>
 </div>
