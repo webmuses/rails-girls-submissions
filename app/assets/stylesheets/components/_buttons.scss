@@ -20,3 +20,46 @@
   @extend .btn;
   padding: $bs-1 $baseline;
 }
+
+.link-return {
+  display: block;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+
+  &:after {
+    display: inline;
+    content: " to all submissions";
+  }
+
+  @include media($tablet) {
+    position: fixed;
+    left: $bs-1;
+    padding: 0 $bs-1;
+    line-height: $bs3;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      outline: 1px dotted $rg-red;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  @include media($big-screen) {
+    left: 10%;
+    line-height: $bs2;
+
+    &:after {
+      display: inline;
+    }
+  }
+}

@@ -33,7 +33,7 @@ $input-height: $bs2;
     display: block;
     line-height: $input-height;
     padding: 0 $bs-1;
-    border: 1px solid #ccc;
+    border: 1px solid $grey-light;
     font-size: inherit;
 
     &:focus {
