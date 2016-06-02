@@ -104,7 +104,7 @@
 
 <% if Submission.rated.include?(@submission) %>
   <% @submission.rates.each do |rate| %>
-    <%= print_nickname_and_value(rate) %>
+    <%= "#{rate.user.nickname}: #{rate.value}" %>
     </br>
   <% end %>
 <% end %>
