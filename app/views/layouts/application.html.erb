@@ -9,6 +9,15 @@
 </head>
 <body>
 <p id="notice"><%= notice %></p>
+
+<% if flash[:error] %>
+  <div>
+    <% flash[:error].each do |error| %>
+      <%= error %>
+    <% end %>
+  </div>
+<% end %>
+
 <%= yield %>
 
 </body>
