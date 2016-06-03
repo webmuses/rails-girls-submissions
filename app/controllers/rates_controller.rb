@@ -1,13 +1,14 @@
 class RatesController < ApplicationController
-
   def create
-    submission_rater = SubmissionRater.new
-    rated = submission_rater.set_rate(params[:value], params[:submission_id], current_user.id)
+    value = Integer(params[:value])
+    submission_id = Integer(params[:submission_id])
+    user_id = current_user.id
 
-    if rated
-      redirect_to :back, notice: 'Submission was rated successfully'
-    else
-      redirect_to :back, error: 'Submission was not rated'
+    rate_creator = RateCreator.build(value, submission_id, user_id)
+    if !rate_creator.call
+      flash[:error] = rate_creator.errors
     end
+
+    redirect_to :back
   end
 end
