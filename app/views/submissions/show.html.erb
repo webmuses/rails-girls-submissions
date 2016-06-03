@@ -101,3 +101,10 @@
     </aside>
   </article>
 </div>
+
+<% if Submission.rated.include?(@submission) %>
+  <% @submission.rates.each do |rate| %>
+    <%= "#{rate.user.nickname}: #{rate.value}" %>
+    </br>
+  <% end %>
+<% end %>
