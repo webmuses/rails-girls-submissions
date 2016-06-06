@@ -113,8 +113,7 @@
 <% @submission.comments.each do |comment| %>
   <tr>
     <td><%= comment.body %></td>
-    <td><%= comment.submission %></td>
-    <td><%= comment.user %></td>
+    <td><strong><%= comment.user.nickname %></strong></td>
     <td><%= link_to 'Show', submission_comment_path(comment.submission_id, comment.id) %></td>
     <td><%= link_to 'Edit', edit_submission_comment_path(comment.submission_id, comment.id) %></td>
     <td><%= link_to 'Destroy', submission_comment_path(comment.submission_id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>

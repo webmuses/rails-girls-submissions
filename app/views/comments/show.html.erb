@@ -1,18 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Body:</strong>
   <%= @comment.body %>
-</p>
-
-<p>
-  <strong>Submission:</strong>
-  <%= @comment.submission %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @comment.user %>
 </p>
 
 <%= link_to 'Edit', edit_submission_comment_path(@comment.submission_id, @comment.id) %> |
