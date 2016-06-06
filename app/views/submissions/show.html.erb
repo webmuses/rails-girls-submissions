@@ -108,3 +108,18 @@
     </br>
   <% end %>
 <% end %>
+</br>
+<div> Comments: </div>
+<% @submission.comments.each do |comment| %>
+  <tr>
+    <td><%= comment.body %></td>
+    <td><%= comment.submission %></td>
+    <td><%= comment.user %></td>
+    <td><%= link_to 'Show', submission_comment_path(comment.submission_id, comment.id) %></td>
+    <td><%= link_to 'Edit', edit_submission_comment_path(comment.submission_id, comment.id) %></td>
+    <td><%= link_to 'Destroy', submission_comment_path(comment.submission_id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </br>
+  </tr>
+<% end %>
+<%= link_to "Add comment", new_submission_comment_path(@submission) %>
+</br>

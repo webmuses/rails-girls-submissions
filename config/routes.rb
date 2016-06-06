@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :submissions, except: [:edit, :update, :index] do
     resource :rate, only: :create
-    resources :comments
+    resources :comments, except: [:index]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
