@@ -1,5 +1,16 @@
 <%= render 'layouts/header' %>
 
+<% if @comment.errors.any? %>
+  <div class="form-error-box">
+    <h2 class="form-error-header">Your comment needs to be corrected</h2>
+    
+    <ul class="form-error-list">
+    <% @comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <div class="l-wrapper-narrow">
   <%= link_to '← Back', submissions_path, class: "link-return" %>

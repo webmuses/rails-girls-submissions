@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @submission, notice: 'Comment was successfully created.'
     else
-      render :new
+      render "/submissions/show"
     end
   end
 
