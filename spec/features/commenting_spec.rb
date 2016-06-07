@@ -7,7 +7,6 @@ describe "the commenting process" do
     login_as(user, scope: :user)
     visit submission_path(submission)
     fill_in 'comment_body', with: comment_body
-    expect{click_button 'Comment'}.to change(submission.comments, :count).by(1)
     expect(page).to have_text(comment_body)
   end
 end
