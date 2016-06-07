@@ -3,7 +3,7 @@
 <% if @comment.errors.any? %>
   <div class="form-error-box">
     <h2 class="form-error-header">Your comment needs to be corrected</h2>
-    
+
     <ul class="form-error-list">
     <% @comment.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -116,18 +116,17 @@
 <% if Submission.rated.include?(@submission) %>
   <% @submission.rates.each do |rate| %>
     <%= "#{rate.user.nickname}: #{rate.value}" %>
-    </br>
+    <br>
   <% end %>
 <% end %>
-</br>
+<br>
 <div> Comments: </div>
 <% @submission.comments.each do |comment| %>
   <tr>
     <td><%= comment.body %></td>
     <td><strong><%= comment.user.nickname %></strong></td>
-    </br>
+    <br>
   </tr>
 <% end %>
 
 <%= render 'comments/form' %>
-</br>
