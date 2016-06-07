@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :set_submission
 
   def create
+    @submission = Submission.find(params[:submission_id])
     @comment = @submission.comments.build({ body: comment_params[:body], submission: @submission, user: current_user })
 
     if @comment.save
@@ -12,10 +12,6 @@ class CommentsController < ApplicationController
   end
 
   private
-    def set_submission
-      @submission = Submission.find(params[:submission_id])
-    end
-
     def comment_params
       params.require(:comment).permit(:body)
     end
