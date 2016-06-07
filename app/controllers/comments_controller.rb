@@ -1,10 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_submission
 
-  def new
-    @comment = Comment.new
-  end
-
   def create
     @comment = @submission.comments.build({ body: comment_params[:body], submission: @submission, user: current_user })
 

@@ -22,6 +22,7 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/1
   def show
+    @comment = Comment.new
   end
 
   # GET /submissions/new
