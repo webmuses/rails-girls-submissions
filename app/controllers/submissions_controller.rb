@@ -22,7 +22,8 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/1
   def show
-    @comment = Comment.new
+    comment = Comment.new
+    render :show, locals: { comment: comment, submission: @submission }
   end
 
   # GET /submissions/new
