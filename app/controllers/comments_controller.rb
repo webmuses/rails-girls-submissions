@@ -6,12 +6,12 @@ class CommentsController < ApplicationController
     user_id = current_user.id
 
     comment_creator = CommentCreator.build(body, submission_id, user_id)
-    comment = comment_creator.call
-    if comment_creator.success?
+    result = comment_creator.call
+    if result.success
       redirect_to submission_path(submission_id), notice: 'Comment was successfully created.'
     else
       submission = Submission.find(submission_id)
-      render "submissions/show", locals: { submission: submission, comment: comment }
+      render "submissions/show", locals: { submission: submission, comment: result.object }
     end
   end
 
