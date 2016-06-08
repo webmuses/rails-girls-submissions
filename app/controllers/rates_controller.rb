@@ -8,8 +8,9 @@ class RatesController < ApplicationController
     rate_creator.call
     if !rate_creator.success?
       flash[:error] = rate_creator.errors
+      redirect_to :back
+    else
+      redirect_to :back, notice: 'Rate was successfully created.'
     end
-
-    redirect_to :back
   end
 end
