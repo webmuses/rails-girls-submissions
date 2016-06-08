@@ -1,13 +1,17 @@
 class CommentsController < ApplicationController
 
   def create
-    @submission = Submission.find(params[:submission_id])
-    @comment = @submission.comments.build({ body: comment_params[:body], submission: @submission, user: current_user })
+    body = comment_params[:body]
+    submission_id = params[:submission_id]
+    user_id = current_user.id
 
-    if @comment.save
-      redirect_to @submission, notice: 'Comment was successfully created.'
+    comment_creator = CommentCreator.build(body, submission_id, user_id)
+    comment = comment_creator.call
+    if comment_creator.success?
+      redirect_to submission_path(submission_id), notice: 'Comment was successfully created.'
     else
-      render "/submissions/show"
+      submission = Submission.find(submission_id)
+      render "submissions/show", locals: { submission: submission, comment: comment }
     end
   end
 
