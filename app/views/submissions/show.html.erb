@@ -113,13 +113,14 @@
   </article>
 </div>
 
-<% if Submission.rated.include?(submission) %>
+<% if submission.status == "rated" %>
   <% submission.rates.each do |rate| %>
     <%= "#{rate.user.nickname}: #{rate.value}" %>
     <br>
   <% end %>
 <% end %>
 <br>
+
 <div> Comments: </div>
 <% submission.comments.each do |comment| %>
   <tr>
