@@ -5,7 +5,8 @@ class RatesController < ApplicationController
     user_id = current_user.id
 
     rate_creator = RateCreator.build(value, submission_id, user_id)
-    if !rate_creator.call
+    rate_creator.call
+    if !rate_creator.success?
       flash[:error] = rate_creator.errors
     end
 

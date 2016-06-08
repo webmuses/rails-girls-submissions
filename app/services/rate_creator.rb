@@ -18,13 +18,19 @@ class RateCreator
     if @rate_checker.user_has_already_rated?(@submission.id, @user.id)
       @submission.errors.add(:base,
         'You are not allowed to rate the same submission twice')
-      false
+        @success = false
     else
-      rate.save
+      @success = rate.save
     end
+
+    rate
   end
 
   def errors
     @submission.errors.full_messages
+  end
+
+  def success?
+    @success
   end
 end

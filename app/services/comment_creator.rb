@@ -14,6 +14,7 @@ class CommentCreator
   def call
     comment = Comment.new({ body: @body, submission: @submission, user: @user })
     @success = comment.save
+
     comment
   end
 
