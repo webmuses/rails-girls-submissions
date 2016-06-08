@@ -5,9 +5,9 @@ class RatesController < ApplicationController
     user_id = current_user.id
 
     rate_creator = RateCreator.build(value, submission_id, user_id)
-    rate_creator.call
-    if !rate_creator.success?
-      flash[:error] = rate_creator.errors
+    result = rate_creator.call
+    if !result.success
+      flash[:error] = result.errors
       redirect_to :back
     else
       redirect_to :back, notice: 'Rate was successfully created.'
