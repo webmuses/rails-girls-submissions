@@ -13,12 +13,8 @@ class CommentCreator
 
   def call
     comment = Comment.new({ body: @body, submission: @submission, user: @user })
-    @success = comment.save
+    success = comment.save
 
-    comment
-  end
-
-  def success?
-    @success
+    Result.new(comment, success)
   end
 end

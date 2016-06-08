@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe RateCreator do
   let!(:submission) { FactoryGirl.create(:submission) }
   let!(:user) { FactoryGirl.create(:user) }
-  subject { described_class.build(1, submission, user) }
+  subject { described_class.build(1, submission.id, user.id) }
 
   it 'creates a new rate' do
     subject.call
