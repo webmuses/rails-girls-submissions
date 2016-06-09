@@ -113,8 +113,9 @@
   </article>
 </div>
 
+<div> Rates: </div>
 <% if submission.status == "rated" %>
-  <% submission.rates.each do |rate| %>
+  <% submissions_rates.each do |rate| %>
     <%= "#{rate.user.nickname}: #{rate.value}" %>
     <br>
   <% end %>
@@ -122,10 +123,12 @@
 <br>
 
 <div> Comments: </div>
-<% submission.comments.each do |comment| %>
+<% submissions_comments.each do |comment| %>
+  <% comment_presenter = CommentPresenter.new(comment, comment.user) %>
   <tr>
-    <td><%= comment.body %></td>
-    <td><strong><%= comment.user.nickname %></strong></td>
+    <td><strong><%= comment_presenter.print_user %></strong></td>
+    <td><%= comment_presenter.print_timestamp %></td>
+    <td><%= comment_presenter.print_body %></td>
     <br>
   </tr>
 <% end %>
