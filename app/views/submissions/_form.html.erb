@@ -1,11 +1,11 @@
-<%= form_for(@submission, html: { class: "form" }) do |f| %>
+<%= form_for(submission, html: { class: "form" }) do |f| %>
   <h1 class="form-header">Apply for Rails Girls workshop</h1>
-  <% if @submission.errors.any? %>
+  <% if submission.errors.any? %>
     <div class="form-error-box">
-      <h2 class="form-error-header"><%= pluralize(@submission.errors.count, "field") %> need to be corrected</h2>
+      <h2 class="form-error-header"><%= pluralize(submission.errors.count, "field") %> need to be corrected</h2>
 
       <ul class="form-error-list">
-      <% @submission.errors.full_messages.each do |message| %>
+      <% submission.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
