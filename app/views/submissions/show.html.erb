@@ -1,110 +1,138 @@
 <%= render 'layouts/header' %>
 
+<% if comment.errors.any? %>
+  <div class="form-error-box">
+    <h2 class="form-error-header">Your comment needs to be corrected</h2>
+
+    <ul class="form-error-list">
+    <% comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <div class="l-wrapper-narrow">
   <%= link_to '← Back', submissions_path, class: "link-return" %>
   <article class="l-submission-single">
     <h1 class="submission-header">
-      <%= @submission.full_name %>
-      <span class="submission-header-status"><%= @submission.status %></span>
+      <%= submission.full_name %>
+      <span class="submission-header-status"><%= submission.status %></span>
     </h1>
 
     <p class="submission-answer">
       <span class="submission-answer-label">Email:</span>
-      <%= @submission.email %>
+      <%= submission.email %>
     </p>
 
     <p class="submission-answer">
       <span class="submission-answer-label">Age:</span>
-      <%= @submission.age %>
+      <%= submission.age %>
     </p>
 
     <p class="submission-answer">
       <span class="submission-answer-label">Codecademy username:</span>
-      <%= @submission.codecademy_username %>
+      <%= submission.codecademy_username %>
     </p>
 
     <p class="submission-answer">
       <span class="submission-answer-label">Codecademy status:</span>
-      <%= @submission.codecademy_status %>
+      <%= submission.codecademy_status %>
     </p>
 
     <p class="submission-answer" class="submission-answer">
       <span class="submission-answer-label">Codecademy url:</span>
-      <%= link_to "https://www.codecademy.com/#{@submission.codecademy_username}" %>
+      <%= link_to "https://www.codecademy.com/#{submission.codecademy_username}" %>
     </p>
 
     <p class="submission-answer submission-answer-block">
       <span class="submission-answer-label">Description:</span>
-      <%= @submission.description %>
+      <%= submission.description %>
     </p>
 
     <p class="submission-answer">
       <span class="submission-answer-label">HTML:</span>
-      <%= @submission.html %>
+      <%= submission.html %>
     </p>
 
     <p class="submission-answer">
       <span class="submission-answer-label">CSS:</span>
-      <%= @submission.css %>
+      <%= submission.css %>
     </p>
 
     <p class="submission-answer">
       <span class="submission-answer-label">JavaScript:</span>
-      <%= @submission.js %>
+      <%= submission.js %>
     </p>
 
     <p class="submission-answer">
       <span class="submission-answer-label">Ruby on Rails:</span>
-      <%= @submission.ror %>
+      <%= submission.ror %>
     </p>
 
     <p class="submission-answer">
       <span class="submission-answer-label">Databases:</span>
-      <%= @submission.db %>
+      <%= submission.db %>
     </p>
 
     <p class="submission-answer">
       <span class="submission-answer-label">Any other programming languages:</span>
-      <%= @submission.programming_others %>
+      <%= submission.programming_others %>
     </p>
 
     <p class="submission-answer">
       <span class="submission-answer-label">English:</span>
-      <%= @submission.english %>
+      <%= submission.english %>
     </p>
 
     <p class="submission-answer">
       <span class="submission-answer-label">Operating system:</span>
-      <%= @submission.operating_system %>
+      <%= submission.operating_system %>
     </p>
 
     <p class="submission-answer">
       <span class="submission-answer-label">First time:</span>
-      <%= @submission.first_time ? "Yes" : "I took part in Rails Girls" %>
+      <%= submission.first_time ? "Yes" : "I took part in Rails Girls" %>
     </p>
 
     <p class="submission-answer submission-answer-block">
       <span class="submission-answer-label">Goals:</span>
-      <%= @submission.goals %>
+      <%= submission.goals %>
     </p>
 
     <p class="submission-answer submission-answer-block">
       <span class="submission-answer-label">Problems:</span>
-      <%= @submission.problems %>
+      <%= submission.problems %>
     </p>
 
     <aside class="aside-widget">
       <% (0..5).each do |rate| %>
-        <%= button_to rate, submission_rate_path(@submission), params: {value: rate} %>
+        <%= button_to rate, submission_rate_path(submission), params: {value: rate} %>
       <% end %>
     </aside>
   </article>
 </div>
 
-<% if Submission.rated.include?(@submission) %>
-  <% @submission.rates.each do |rate| %>
-    <%= "#{rate.user.nickname}: #{rate.value}" %>
-    </br>
+<% if submission.status == "rated" %>
+  <div> Rates: </div>
+  <% submissions_rates.each do |rate| %>
+    <% rate_presenter = RatePresenter.new(rate, rate.user) %>
+    <%= rate_presenter.print_user %>
+    <%= rate_presenter.print_value %>
+    <br>
   <% end %>
 <% end %>
+<br>
+
+<div> Comments: </div>
+<% submissions_comments.each do |comment| %>
+  <% comment_presenter = CommentPresenter.new(comment, comment.user) %>
+  <tr>
+    <td><strong><%= comment_presenter.print_user %></strong></td>
+    <td><%= comment_presenter.print_timestamp %></td>
+    <td><%= comment_presenter.print_body %></td>
+    <br>
+  </tr>
+<% end %>
+
+<%= render 'comments/form', { submission: submission, comment: comment } %>
