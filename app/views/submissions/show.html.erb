@@ -113,7 +113,7 @@
   </article>
 </div>
 
-<% if submission.status == "rated" %>
+<% if submission.rated? %>
   <div> Rates: </div>
   <% submissions_rates.each do |rate| %>
     <% rate_presenter = RatePresenter.new(rate, rate.user) %>

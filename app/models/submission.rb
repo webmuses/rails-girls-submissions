@@ -10,7 +10,7 @@ class Submission < ActiveRecord::Base
   has_many :comments
 
   SKILLS = ['html', 'css', 'js', 'ror', 'db', 'programming_others']
-  REQUIRED_RATES_NUM = 3
+  REQUIRED_RATES_NUM = 1
 
   scope :rejected, -> { where(rejected: true) }
   scope :rated, -> { where(rejected: false).joins(:rates).group(:id).having('count(*) >= ?', Submission::REQUIRED_RATES_NUM)}
@@ -22,6 +22,10 @@ class Submission < ActiveRecord::Base
     else
       self.rates.length >= REQUIRED_RATES_NUM ? "rated" : "pending"
     end
+  end
+
+  def rated?
+    self.status == "rated"
   end
 
   def reject
