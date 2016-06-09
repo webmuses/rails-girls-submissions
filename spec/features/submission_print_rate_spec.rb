@@ -13,8 +13,7 @@ let!(:user) { FactoryGirl.create(:user) }
 
       login_as(user, scope: :user)
       visit submission_path(submission.id)
-      expect(page).to have_text(sample_rate.user.nickname)
-      expect(page).to have_text(sample_rate.value)
+      expect(page).to have_text("#{sample_rate.user.nickname} #{sample_rate.value}")
     end
   end
 
@@ -29,8 +28,7 @@ let!(:user) { FactoryGirl.create(:user) }
 
       login_as(user, scope: :user)
       visit submission_path(submission.id)
-      expect(page).not_to have_text(sample_rate.user.nickname)
-      expect(page).not_to have_text(sample_rate.value)
+      expect(page).not_to have_text("#{sample_rate.user.nickname} #{sample_rate.value}")
     end
   end
 end
