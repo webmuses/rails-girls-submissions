@@ -32,7 +32,8 @@ class SubmissionsController < ApplicationController
     submission = Submission.find(params[:id])
     comment = Comment.new
 
-    render :show, locals: { comment: comment, submission: submission }
+    render :show, locals: { comment: comment, submission: submission,
+      submissions_comments: submission.comments, submissions_rates: submission.rates }
   end
 
   # GET /submissions/new
