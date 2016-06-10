@@ -5,10 +5,10 @@ RSpec.describe RatePresenter do
   subject { described_class.new(rate, rate.user) }
 
   it "presents rate's user nickname" do
-    expect(subject.print_user).to eq(rate.user.nickname)
+    expect(subject.user_nickname).to eq(rate.user.nickname)
   end
 
   it "presents rate's value" do
-    expect(subject.print_value).to eq(rate.value)
+    expect(subject.value).to eq(rate.value)
   end
 end
