@@ -4,11 +4,11 @@ class RatePresenter
     @user = user
   end
 
-  def print_user
+  def user_nickname
     @user.nickname
   end
 
-  def print_value
+  def value
     @rate.value
   end
 end

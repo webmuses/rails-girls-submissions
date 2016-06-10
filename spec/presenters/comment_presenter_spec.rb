@@ -5,14 +5,14 @@ RSpec.describe CommentPresenter do
   subject { described_class.new(comment, comment.user) }
 
   it "presents comment's user nickname" do
-    expect(subject.print_user).to eq(comment.user.nickname)
+    expect(subject.user_nickname).to eq(comment.user.nickname)
   end
 
   it "presents comment's timestamp" do
-    expect(subject.print_timestamp).to eq(comment.created_at)
+    expect(subject.timestamp).to eq(comment.created_at)
   end
 
   it "presents comment's user nickname" do
-    expect(subject.print_body).to eq(comment.body)
+    expect(subject.body).to eq(comment.body)
   end
 end
