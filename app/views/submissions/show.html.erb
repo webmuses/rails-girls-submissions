@@ -115,22 +115,20 @@
 
 <% if submission.rated? %>
   <div> Rates: </div>
-  <% submissions_rates.each do |rate| %>
-    <% rate_presenter = RatePresenter.new(rate, rate.user) %>
-    <%= rate_presenter.user_nickname %>
-    <%= rate_presenter.value %>
+  <% rate_presenters.each do |presenter| %>
+    <%= presenter.user_nickname %>
+    <%= presenter.value %>
     <br>
   <% end %>
 <% end %>
 <br>
 
 <div> Comments: </div>
-<% submissions_comments.each do |comment| %>
-  <% comment_presenter = CommentPresenter.new(comment, comment.user) %>
+<% comment_presenters.each do |presenter| %>
   <tr>
-    <td><strong><%= comment_presenter.user_nickname %></strong></td>
-    <td><%= comment_presenter.timestamp %></td>
-    <td><%= comment_presenter.body %></td>
+    <td><strong><%= presenter.user_nickname %></strong></td>
+    <td><%= presenter.timestamp %></td>
+    <td><%= presenter.body %></td>
     <br>
   </tr>
 <% end %>
