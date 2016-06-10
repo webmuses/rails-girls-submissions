@@ -24,6 +24,10 @@ class Submission < ActiveRecord::Base
     end
   end
 
+  def rated?
+    self.status == "rated"
+  end
+
   def reject
     self.rejected = true
   end

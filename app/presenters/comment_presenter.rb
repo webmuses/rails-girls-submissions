@@ -4,15 +4,15 @@ class CommentPresenter
     @user = user
   end
 
-  def print_body
+  def body
     @comment.body
   end
 
-  def print_user
+  def user_nickname
     @user.nickname
   end
 
-  def print_timestamp
+  def timestamp
     @comment.updated_at
   end
 end

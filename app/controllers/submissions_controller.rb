@@ -32,8 +32,11 @@ class SubmissionsController < ApplicationController
     submission = Submission.find(params[:id])
     comment = Comment.new
 
+    rate_presenters = create_rate_presenters(submission.rates)
+    comment_presenters = create_comment_presenters(submission.comments)
+
     render :show, locals: { comment: comment, submission: submission,
-      submissions_comments: submission.comments, submissions_rates: submission.rates }
+      comment_presenters: comment_presenters, rate_presenters: rate_presenters }
   end
 
   # GET /submissions/new
@@ -74,5 +77,13 @@ class SubmissionsController < ApplicationController
       :codecademy_username, :description, :html, :css, :js, :ror, :db,
       :programming_others, :english, :operating_system, :first_time, :goals,
       :problems)
+    end
+
+    def create_rate_presenters(rates)
+      rates.map { |rate| RatePresenter.new(rate, rate.user) }    
+    end
+
+    def create_comment_presenters(comments)
+      comments.map { |comment| CommentPresenter.new(comment, comment.user) }
     end
 end
