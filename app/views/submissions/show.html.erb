@@ -117,8 +117,8 @@
   <div> Rates: </div>
   <% submissions_rates.each do |rate| %>
     <% rate_presenter = RatePresenter.new(rate, rate.user) %>
-    <%= rate_presenter.print_user %>
-    <%= rate_presenter.print_value %>
+    <%= rate_presenter.user_nickname %>
+    <%= rate_presenter.value %>
     <br>
   <% end %>
 <% end %>
@@ -128,9 +128,9 @@
 <% submissions_comments.each do |comment| %>
   <% comment_presenter = CommentPresenter.new(comment, comment.user) %>
   <tr>
-    <td><strong><%= comment_presenter.print_user %></strong></td>
-    <td><%= comment_presenter.print_timestamp %></td>
-    <td><%= comment_presenter.print_body %></td>
+    <td><strong><%= comment_presenter.user_nickname %></strong></td>
+    <td><%= comment_presenter.timestamp %></td>
+    <td><%= comment_presenter.body %></td>
     <br>
   </tr>
 <% end %>
