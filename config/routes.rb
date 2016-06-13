@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/submissions/rated", to: "submissions#rated"
   get "/submissions/to_rate", to: "submissions#to_rate"
   get "/submissions/rejected", to: "submissions#rejected"
+  get "/submissions/settings", to: "submissions#settings"
 
   devise_for :users, skip: [:passwords, :registrations], :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 

@@ -27,6 +27,14 @@ class SubmissionsController < ApplicationController
     render :rejected, locals: { submissions_rejected: submissions_rejected }
   end
 
+  def settings
+    @submissions = Submission.all
+    respond_to do |format|
+      format.html
+      format.csv { render text: @submissions.to_csv }
+    end
+  end
+
   # GET /submissions/1
   def show
     submission = Submission.find(params[:id])
@@ -80,7 +88,7 @@ class SubmissionsController < ApplicationController
     end
 
     def create_rate_presenters(rates)
-      rates.map { |rate| RatePresenter.new(rate, rate.user) }    
+      rates.map { |rate| RatePresenter.new(rate, rate.user) }
     end
 
     def create_comment_presenters(comments)
