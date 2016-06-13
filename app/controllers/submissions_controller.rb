@@ -1,6 +1,6 @@
 class SubmissionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create, :thank_you]
-  layout 'dashboard', only: [:all, :rated, :to_rate, :rejected]
+  layout 'dashboard', only: [:all, :rated, :to_rate, :rejected, :settings]
 
   # GET /submissions
   def all
@@ -31,7 +31,9 @@ class SubmissionsController < ApplicationController
     @submissions = Submission.all
     respond_to do |format|
       format.html
-      format.csv { render text: @submissions.to_csv }
+      format.csv do
+        send_data @submissions.to_csv       
+      end
     end
   end
 
