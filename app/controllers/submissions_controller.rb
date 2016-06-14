@@ -29,10 +29,13 @@ class SubmissionsController < ApplicationController
 
   def settings
     @submissions = Submission.all
+
     respond_to do |format|
       format.html
       format.csv do
-        send_data @submissions.to_csv       
+        csv_generator = CsvGenerator.new
+        submissions_data = csv_generator.to_csv(@submissions)
+        send_data submissions_data
       end
     end
   end
