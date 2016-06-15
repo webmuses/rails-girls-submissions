@@ -1,0 +1,11 @@
+<%= render 'submissions/result_table', { submissions: submissions_accepted } %>
+<%= render 'submissions/result_table', { submissions: submissions_waitlist } %>
+<%= render 'submissions/result_table', { submissions: submissions_unaccepted } %>
+
+Download:
+<br/>
+<%= link_to "Accepted", csv_download_accepted_path %>
+<br/>
+<%= link_to "Waitlist", csv_download_waitlist_path %>
+<br/>
+<%= link_to "Unaccepted", csv_download_unaccepted_path %>
