@@ -1,6 +1,6 @@
 class SubmissionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create, :thank_you]
-  layout 'dashboard', only: [:all, :rated, :to_rate, :rejected, :settings]
+  layout 'dashboard', only: [:all, :rated, :to_rate, :rejected, :settings, :results]
 
   # GET /submissions
   def all
@@ -25,6 +25,15 @@ class SubmissionsController < ApplicationController
     submissions_rejected = Submission.rejected
 
     render :rejected, locals: { submissions_rejected: submissions_rejected }
+  end
+
+  def results
+    submissions_accepted = Submission.select { |submission| submission.accepted? }
+    submissions_waitlist = Submission.select { |submission| submission.waitlist? }
+    submissions_unaccepted = Submission.select { |submission| submission.unaccepted? }
+
+    render :results, locals: { submissions_accepted: submissions_accepted, submissions_waitlist: submissions_waitlist,
+    submissions_unaccepted: submissions_unaccepted }
   end
 
   def settings
