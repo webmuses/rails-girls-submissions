@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   get "/submissions/to_rate", to: "submissions#to_rate"
   get "/submissions/rejected", to: "submissions#rejected"
   get "/submissions/settings", to: "submissions#settings"
-  get "/submissions/download_accepted", to: "submissions#download_accepted"
-  get "/submissions/download_waitlist", to: "submissions#download_waitlist"
-  get "/submissions/download_unaccepted", to: "submissions#download_unaccepted"
+  get "/csv/download_accepted", to: "csv#download_accepted"
+  get "/csv/download_waitlist", to: "csv#download_waitlist"
+  get "/csv/download_unaccepted", to: "csv#download_unaccepted"
 
   devise_for :users, skip: [:passwords, :registrations], :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
