@@ -11,7 +11,6 @@ class Submission < ActiveRecord::Base
 
   SKILLS = ['html', 'css', 'js', 'ror', 'db', 'programming_others']
   REQUIRED_RATES_NUM = 3
-  ACCEPTED_THRESHOLD = 3
   WAITLIST_THRESHOLD = 2
 
   scope :rejected, -> { where(rejected: true) }

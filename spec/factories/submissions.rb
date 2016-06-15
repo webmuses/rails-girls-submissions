@@ -27,5 +27,25 @@ FactoryGirl.define do
         create_list(:rate, evaluator.rates_count, submission: submission)
       end
     end
+
+    trait :with_min_rates do
+      transient do
+        rates_count Submission::REQUIRED_RATES_NUM
+      end
+
+      after(:create) do |submission, evaluator|
+        create_list(:rate, evaluator.rates_count, value: 1, submission: submission)
+      end
+    end
+
+    trait :with_max_rates do
+      transient do
+        rates_count Submission::REQUIRED_RATES_NUM
+      end
+
+      after(:create) do |submission, evaluator|
+        create_list(:rate, evaluator.rates_count, value: 5, submission: submission)
+      end
+    end
   end
 end
