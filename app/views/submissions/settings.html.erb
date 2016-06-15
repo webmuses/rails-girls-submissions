@@ -1,6 +1,7 @@
 <thead class="submissions-table-header">
   <tr>
     <th class="submission-header-name">Full name</th>
+    <th class="submission-header-narrow submission-mobile-hidden">Email</th>
     <th class="submission-header-narrow submission-mobile-hidden">Average</th>
     <th class="submission-header-narrow" colspan="3"></th>
   </tr>
@@ -10,6 +11,7 @@
   <% submissions_accepted.each do |submission| %>
   <tr>
     <td class="submission-body-name"><%= submission.full_name %></td>
+    <td class="submission-mobile-hidden"><%= submission.email %></td>
     <td class="submission-mobile-hidden"><%= submission.average_rate.round(2) if submission.rated? %></td>
     <td><%= link_to 'Show', submission %></td>
   </tr>
@@ -19,6 +21,7 @@
 <thead class="submissions-table-header">
   <tr>
     <th class="submission-header-name">Full name</th>
+    <th class="submission-header-narrow submission-mobile-hidden">Email</th>
     <th class="submission-header-narrow submission-mobile-hidden">Average</th>
     <th class="submission-header-narrow" colspan="3"></th>
   </tr>
@@ -28,6 +31,7 @@
   <% submissions_waitlist.each do |submission| %>
   <tr>
     <td class="submission-body-name"><%= submission.full_name %></td>
+    <td class="submission-mobile-hidden"><%= submission.email %></td>
     <td class="submission-mobile-hidden"><%= submission.average_rate.round(2) if submission.rated? %></td>
     <td><%= link_to 'Show', submission %></td>
   </tr>
@@ -37,6 +41,7 @@
 <thead class="submissions-table-header">
   <tr>
     <th class="submission-header-name">Full name</th>
+    <th class="submission-header-narrow submission-mobile-hidden">Email</th>
     <th class="submission-header-narrow submission-mobile-hidden">Average</th>
     <th class="submission-header-narrow" colspan="3"></th>
   </tr>
@@ -46,6 +51,7 @@
   <% submissions_unaccepted.each do |submission| %>
   <tr>
     <td class="submission-body-name"><%= submission.full_name %></td>
+    <td class="submission-mobile-hidden"><%= submission.email %></td>
     <td class="submission-mobile-hidden"><%= submission.average_rate.round(2) if submission.rated? %></td>
     <td><%= link_to 'Show', submission %></td>
   </tr>
