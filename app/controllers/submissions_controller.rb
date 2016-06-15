@@ -28,9 +28,12 @@ class SubmissionsController < ApplicationController
   end
 
   def settings
-    submissions = Submission.all
+    submissions_accepted = Submission.select { |submission| submission.accepted? }
+    submissions_waitlist = Submission.select { |submission| submission.waitlist? }
+    submissions_unaccepted = Submission.select { |submission| submission.unaccepted? }
 
-    render :settings, locals: { submissions: submissions }
+    render :settings, locals: { submissions_accepted: submissions_accepted, submissions_waitlist: submissions_waitlist,
+    submissions_unaccepted: submissions_unaccepted }
   end
 
   # GET /submissions/1
