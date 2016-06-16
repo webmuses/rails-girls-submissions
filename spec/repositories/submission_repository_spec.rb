@@ -8,7 +8,7 @@ describe SubmissionRepository do
   describe "#accepted" do
     subject { described_class.new.accepted }
 
-    context "there are no submissions with rates" do
+    context "when there are no submissions with rates" do
       before do
         2.times { FactoryGirl.create(:submission) }
       end
@@ -18,7 +18,7 @@ describe SubmissionRepository do
       end
     end
 
-    context "there are no submissions with rates higher than threshold" do
+    context "when there are no submissions with rates higher than threshold" do
       before do
         2.times { FactoryGirl.create(:submission, :with_min_rates) }
       end
@@ -28,12 +28,12 @@ describe SubmissionRepository do
       end
     end
 
-    context "there are two submission with rates higher than threshold" do
+    context "when there are two submission with rates higher than threshold" do
       before do
         2.times { FactoryGirl.create(:submission, :with_max_rates) }
       end
 
-      it "doesn't return any submissions" do
+      it "returns two submissions" do
         expect(subject.count).to eq(2)
       end
     end
