@@ -8,12 +8,12 @@ class SubmissionRepository
   end
 
   def rated
-    Submission.where(rejected: false).joins(:rates).group(:id).having('count(*) >= ?', SubmissionRepository::REQUIRED_RATES_NUM).to_a
+    Submission.where(rejected: false).joins(:rates).group(:id).having('count(*) >= ?', REQUIRED_RATES_NUM).to_a
   end
 
   def to_rate
     Submission.where(rejected: false).joins("LEFT JOIN rates ON submissions.id = rates.submission_id").group(:id)
-      .having('count(*) < ?', SubmissionRepository::REQUIRED_RATES_NUM)
+      .having('count(*) < ?', REQUIRED_RATES_NUM)
   end
 
   def accepted
