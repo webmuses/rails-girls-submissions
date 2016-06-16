@@ -8,14 +8,14 @@ class CsvController < ApplicationController
   end
 
   def download_waitlist
-    submissions_waitlist = Submission.select { |submission| submission.waitlist? }
+    submissions_waitlist = SubmissionRepository.new.waitlist
 
     submissions_waitlist_csv = CsvGenerator.new.to_csv(submissions_waitlist)
     send_data submissions_waitlist_csv, { filename: 'waitlist.csv', type: "text/csv" }
   end
 
   def download_unaccepted
-    submissions_unaccepted = Submission.select { |submission| submission.unaccepted? }
+    submissions_unaccepted = SubmissionRepository.new.unaccepted
 
     submissions_unaccepted_csv = CsvGenerator.new.to_csv(submissions_unaccepted)
     send_data submissions_unaccepted_csv, filename: 'unaccepted.csv', type: "text/csv"

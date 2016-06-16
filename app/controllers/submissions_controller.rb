@@ -28,9 +28,9 @@ class SubmissionsController < ApplicationController
   end
 
   def results
-    submissions_accepted = Submission.select { |submission| submission.accepted? }
-    submissions_waitlist = Submission.select { |submission| submission.waitlist? }
-    submissions_unaccepted = Submission.select { |submission| submission.unaccepted? }
+    submissions_accepted = SubmissionRepository.new.accepted
+    submissions_waitlist = SubmissionRepository.new.waitlist
+    submissions_unaccepted = SubmissionRepository.new.unaccepted
 
     render :results, locals: { submissions_accepted: submissions_accepted, submissions_waitlist: submissions_waitlist,
     submissions_unaccepted: submissions_unaccepted }
