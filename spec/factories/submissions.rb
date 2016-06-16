@@ -20,7 +20,7 @@ FactoryGirl.define do
 
     trait :with_rates do
       transient do
-        rates_count Submission::REQUIRED_RATES_NUM
+        rates_count SubmissionRepository::REQUIRED_RATES_NUM
       end
 
       after(:create) do |submission, evaluator|
@@ -30,7 +30,7 @@ FactoryGirl.define do
 
     trait :with_rate_average_1 do
       transient do
-        rates_count Submission::REQUIRED_RATES_NUM
+        rates_count SubmissionRepository::REQUIRED_RATES_NUM
       end
 
       after(:create) do |submission, evaluator|
@@ -40,7 +40,7 @@ FactoryGirl.define do
 
     trait :with_rate_average_2 do
       transient do
-        rates_count Submission::REQUIRED_RATES_NUM
+        rates_count SubmissionRepository::REQUIRED_RATES_NUM
       end
 
       after(:create) do |submission, evaluator|
@@ -50,7 +50,7 @@ FactoryGirl.define do
 
     trait :with_rate_average_5 do
       transient do
-        rates_count Submission::REQUIRED_RATES_NUM
+        rates_count SubmissionRepository::REQUIRED_RATES_NUM
       end
 
       after(:create) do |submission, evaluator|

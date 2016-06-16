@@ -7,6 +7,9 @@ describe SubmissionRepository do
   before do
     stub_const('SubmissionRepository::WAITLIST_THRESHOLD', 2)
   end
+  before do
+    stub_const('SubmissionRepository::REQUIRED_RATES_NUM', 3)
+  end
 
   describe "#accepted" do
     subject { described_class.new.accepted }
@@ -86,6 +89,20 @@ describe SubmissionRepository do
 
       it "doesn't return any submissions" do
         expect(subject.count).to eq(0)
+      end
+    end
+  end
+
+  describe "#rejected" do
+    subject { described_class.new.rejected }
+
+    context "when there are 3 submissions: 1. with no rates, 2. with rates 3. with rejected equal true" do
+      let!(:rejected_submission) { FactoryGirl.create(:submission, rejected: true) }
+      let!(:to_rate_submission) { FactoryGirl.create(:submission) }
+      let!(:rated_submission) { FactoryGirl.create(:submission, :with_rates) }
+
+      it "returns submission 3 with rejected equal true" do
+        expect(subject).to eq [rejected_submission]
       end
     end
   end
