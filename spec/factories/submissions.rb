@@ -28,7 +28,7 @@ FactoryGirl.define do
       end
     end
 
-    trait :with_min_rates do
+    trait :with_rate_average_1 do
       transient do
         rates_count Submission::REQUIRED_RATES_NUM
       end
@@ -38,7 +38,17 @@ FactoryGirl.define do
       end
     end
 
-    trait :with_max_rates do
+    trait :with_rate_average_2 do
+      transient do
+        rates_count Submission::REQUIRED_RATES_NUM
+      end
+
+      after(:create) do |submission, evaluator|
+        create_list(:rate, evaluator.rates_count, value: 2, submission: submission)
+      end
+    end
+
+    trait :with_rate_average_5 do
       transient do
         rates_count Submission::REQUIRED_RATES_NUM
       end
