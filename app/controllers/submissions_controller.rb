@@ -22,7 +22,7 @@ class SubmissionsController < ApplicationController
   end
 
   def rejected
-    submissions_rejected = Submission.rejected
+    submissions_rejected = SubmissionRepository.new.rejected
 
     render :rejected, locals: { submissions_rejected: submissions_rejected }
   end
