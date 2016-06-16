@@ -3,12 +3,12 @@ class SubmissionRepository
   WAITLIST_THRESHOLD = 2
 
   def accepted
-    Submission.joins(:rates).group('submissions.id').having('avg(value) >= ?', ACCEPTED_THRESHOLD).to_a
+    Submission.where(rejected: false).joins(:rates).group('submissions.id').having('avg(value) >= ?', ACCEPTED_THRESHOLD).to_a
   end
 
   def waitlist
-    Submission.joins(:rates).group('submissions.id').having('avg(value) < ? AND avg(value) >= ?', ACCEPTED_THRESHOLD,
-    WAITLIST_THRESHOLD).to_a
+    Submission.where(rejected: false).joins(:rates).group('submissions.id').having('avg(value) < ? AND avg(value) >= ?',
+    ACCEPTED_THRESHOLD, WAITLIST_THRESHOLD).to_a
   end
 
   def unaccepted
