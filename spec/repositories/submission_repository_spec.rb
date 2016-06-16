@@ -106,4 +106,32 @@ describe SubmissionRepository do
       end
     end
   end
+
+  describe "#rated" do
+    subject { described_class.new.rated }
+
+    context "when there are 3 submissions: 1. with no rates, 2. required number of rates 3. with rejected equal true" do
+      let!(:rejected_submission) { FactoryGirl.create(:submission, rejected: true) }
+      let!(:to_rate_submission) { FactoryGirl.create(:submission) }
+      let!(:rated_submission) { FactoryGirl.create(:submission, :with_rates) }
+
+      it "returns submission 2 with required number of rates" do
+        expect(subject).to eq [rated_submission]
+      end
+    end
+  end
+
+  describe "#to_rate" do
+    subject { described_class.new.to_rate }
+
+    context "when there are 3 submissions: 1. with no rates, 2. required number of rates 3. with rejected equal true" do
+      let!(:rejected_submission) { FactoryGirl.create(:submission, rejected: true) }
+      let!(:to_rate_submission) { FactoryGirl.create(:submission) }
+      let!(:rated_submission) { FactoryGirl.create(:submission, :with_rates) }
+
+      it "returns submission 1 with no rates" do
+        expect(subject).to eq [to_rate_submission]
+      end
+    end
+  end
 end

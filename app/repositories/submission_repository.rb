@@ -7,6 +7,15 @@ class SubmissionRepository
     Submission.where(rejected: true).to_a
   end
 
+  def rated
+    Submission.where(rejected: false).joins(:rates).group(:id).having('count(*) >= ?', SubmissionRepository::REQUIRED_RATES_NUM).to_a
+  end
+
+  def to_rate
+    Submission.where(rejected: false).joins("LEFT JOIN rates ON submissions.id = rates.submission_id").group(:id)
+      .having('count(*) < ?', SubmissionRepository::REQUIRED_RATES_NUM)
+  end
+
   def accepted
     Submission.where(rejected: false).joins(:rates).group('submissions.id').having('avg(value) >= ?', ACCEPTED_THRESHOLD).to_a
   end
