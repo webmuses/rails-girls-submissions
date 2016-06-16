@@ -10,13 +10,13 @@ class SubmissionsController < ApplicationController
   end
 
   def rated
-    submissions_rated = Submission.rated
+    submissions_rated = SubmissionRepository.new.rated
 
     render :rated, locals: { submissions_rated: submissions_rated }
   end
 
   def to_rate
-    submissions_to_rate = Submission.to_rate
+    submissions_to_rate = SubmissionRepository.new.to_rate
 
     render :to_rate, locals: { submissions_to_rate: submissions_to_rate }
   end

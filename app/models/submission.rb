@@ -11,11 +11,6 @@ class Submission < ActiveRecord::Base
 
   SKILLS = ['html', 'css', 'js', 'ror', 'db', 'programming_others']
 
-  # scope :rejected, -> { where(rejected: true) }
-  scope :rated, -> { where(rejected: false).joins(:rates).group(:id).having('count(*) >= ?', SubmissionRepository::REQUIRED_RATES_NUM)}
-  scope :to_rate, -> { where(rejected: false).joins("LEFT JOIN rates ON submissions.id = rates.submission_id").group(:id)
-    .having('count(*) < ?', SubmissionRepository::REQUIRED_RATES_NUM) }
-
   def status
     if self.rejected
       "rejected"
