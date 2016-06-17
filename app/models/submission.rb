@@ -12,26 +12,22 @@ class Submission < ActiveRecord::Base
   SKILLS = ['html', 'css', 'js', 'ror', 'db', 'programming_others']
 
   def status
-    if self.rejected
+    if rejected
       "rejected"
     else
-      self.rates.length >= SubmissionRepository::REQUIRED_RATES_NUM ? "rated" : "pending"
+      rates.length >= SubmissionRepository::REQUIRED_RATES_NUM ? "rated" : "pending"
     end
   end
 
   def rated?
-    self.status == "rated"
+    status == "rated"
   end
 
   def reject
-    self.rejected = true
+    rejected = true
   end
 
   def average_rate
-    if rates.count == 0
-      0
-    else
-      self.rates.sum(:value).to_f  / self.rates.count
-    end
+    rates.count == 0 ? 0 : rates.sum(:value).to_f / rates.count
   end
 end
