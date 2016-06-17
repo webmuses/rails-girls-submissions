@@ -8,26 +8,29 @@ class SubmissionRepository
   end
 
   def rated
-    Submission.where(rejected: false).joins(:rates).group('submissions.id').having('count(*) >= ?', REQUIRED_RATES_NUM).to_a
+    with_rates_if_any.having('count(*) >= ?', REQUIRED_RATES_NUM).to_a
   end
 
   def to_rate
-    Submission.where(rejected: false).joins("LEFT JOIN rates ON submissions.id = rates.submission_id").group(:id)
-      .having('count(*) < ?', REQUIRED_RATES_NUM)
+    with_rates_if_any.having('count(*) < ?', REQUIRED_RATES_NUM).to_a
   end
 
   def accepted
-    Submission.where(rejected: false).joins(:rates).group('submissions.id').having('count(*) >= ? AND avg(value) >= ?',
-      REQUIRED_RATES_NUM, ACCEPTED_THRESHOLD).to_a
+    with_rates_if_any.having('count(*) >= ? AND avg(value) >= ?', REQUIRED_RATES_NUM, ACCEPTED_THRESHOLD).to_a
   end
 
   def waitlist
-    Submission.where(rejected: false).joins(:rates).group('submissions.id').having('count(*) >= ? AND avg(value) < ? AND avg(value) >= ?',
+    with_rates_if_any.having('count(*) >= ? AND avg(value) < ? AND avg(value) >= ?',
       REQUIRED_RATES_NUM, ACCEPTED_THRESHOLD, WAITLIST_THRESHOLD).to_a
   end
 
   def unaccepted
-    average_too_low = Submission.joins(:rates).group('submissions.id').having('avg(value) < ?', WAITLIST_THRESHOLD).to_a
-    average_too_low + rejected
+    with_rates_if_any.having('avg(value) < ?', WAITLIST_THRESHOLD).to_a + rejected
+  end
+
+  private
+
+  def with_rates_if_any
+    Submission.where(rejected: false).joins("LEFT JOIN rates ON submissions.id = rates.submission_id").group('submissions.id')
   end
 end
