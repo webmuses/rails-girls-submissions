@@ -31,6 +31,7 @@ class SubmissionRepository
   private
 
   def with_rates_if_any
-    Submission.where(rejected: false).joins("LEFT JOIN rates ON submissions.id = rates.submission_id").group('submissions.id')
+    Submission.where(rejected: false).joins("LEFT JOIN rates ON submissions.id = rates.submission_id").
+      group('submissions.id')
   end
 end
