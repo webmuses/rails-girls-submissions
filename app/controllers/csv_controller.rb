@@ -9,9 +9,9 @@ class CsvController < ApplicationController
 
   def download_waitlist
     submissions_waitlist = SubmissionRepository.new.waitlist
-
-    submissions_waitlist_csv = CsvGenerator.new.to_csv(submissions_waitlist)
-    send_data submissions_waitlist_csv, { filename: 'waitlist.csv', type: "text/csv" }
+    csv = CsvGenerator.new.call(submissions_waitlist, 'waitlist.csv')
+    
+    send_data csv.file, csv.properties
   end
 
   def download_unaccepted

@@ -1,11 +1,14 @@
 class CsvGenerator
-  def to_csv(submissions)
+  def call(submissions, filename, type = "text/csv")
     column_names = ["full_name", "email"]
-    CSV.generate do |csv|
+
+    file = CSV.generate do |csv|
       csv << column_names
       submissions.each do |submission|
         csv << submission.attributes.values_at(*column_names)
       end
     end
+
+    Csv.new(file, { filename: filename, type: type })
   end
 end
