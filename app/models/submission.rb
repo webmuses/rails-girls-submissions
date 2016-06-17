@@ -24,10 +24,10 @@ class Submission < ActiveRecord::Base
   end
 
   def reject
-    rejected = true
+    self.rejected = true
   end
 
   def average_rate
-    rates.count == 0 ? 0 : rates.sum(:value).to_f / rates.count
+    rates.count == 0 ? 0 : (rates.sum(:value).to_f / rates.count)
   end
 end
