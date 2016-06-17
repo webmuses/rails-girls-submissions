@@ -8,7 +8,7 @@ class SubmissionRepository
   end
 
   def rated
-    Submission.where(rejected: false).joins(:rates).group(:id).having('count(*) >= ?', REQUIRED_RATES_NUM).to_a
+    Submission.where(rejected: false).joins(:rates).group('submissions.id').having('count(*) >= ?', REQUIRED_RATES_NUM).to_a
   end
 
   def to_rate

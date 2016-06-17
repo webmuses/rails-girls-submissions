@@ -19,7 +19,7 @@ let!(:user) { FactoryGirl.create(:user) }
 
   context "when the submission does not have required number of rates" do
 
-    it "does not show ratings in submission view" do
+    it "does not show rates in submission view" do
       (SubmissionRepository::REQUIRED_RATES_NUM - 1).times do
         rate = FactoryGirl.create(:rate)
         submission.rates << rate

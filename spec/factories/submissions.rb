@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :submission do
+  factory :submission, aliases: [:to_rate_submission] do
     sequence(:full_name) { |n| "User#{n}" }
     sequence(:email) { |n| "user#{n}@domain.com" }
     age 20
@@ -18,6 +18,39 @@ FactoryGirl.define do
     programming_others :heard
     rejected false
 
+    trait :with_constants do
+      transient do
+        accepted_threshold SubmissionRepository::ACCEPTED_THRESHOLD
+        waitlist_threshold SubmissionRepository::WAITLIST_THRESHOLD
+        required_rates_num SubmissionRepository::REQUIRED_RATES_NUM
+      end
+    end
+
+    factory :accepted_submission do
+      rejected false
+      after(:create) do |submission, evaluator|
+        create_list(:rate, evaluator.required_rates_num, submission: submission, value: evaluator.accepted_threshold)
+      end
+    end
+
+    factory :waitlist_submission do
+      rejected false
+      after(:create) do |submission, evaluator|
+        create_list(:rate, evaluator.required_rates_num, submission: submission, value: evaluator.waitlist_threshold)
+      end
+    end
+
+    factory :unaccepted_rejected_submission do
+      rejected true
+    end
+
+    factory :unaccepted_not_rejected_submission do
+      rejected false
+      after(:create) do |submission, evaluator|
+        create_list(:rate, evaluator.required_rates_num, submission: submission, value: 0)
+      end
+    end
+
     trait :with_rates do
       transient do
         rates_count SubmissionRepository::REQUIRED_RATES_NUM
@@ -25,36 +58,6 @@ FactoryGirl.define do
 
       after(:create) do |submission, evaluator|
         create_list(:rate, evaluator.rates_count, submission: submission)
-      end
-    end
-
-    trait :with_rate_average_1 do
-      transient do
-        rates_count SubmissionRepository::REQUIRED_RATES_NUM
-      end
-
-      after(:create) do |submission, evaluator|
-        create_list(:rate, evaluator.rates_count, value: 1, submission: submission)
-      end
-    end
-
-    trait :with_rate_average_2 do
-      transient do
-        rates_count SubmissionRepository::REQUIRED_RATES_NUM
-      end
-
-      after(:create) do |submission, evaluator|
-        create_list(:rate, evaluator.rates_count, value: 2, submission: submission)
-      end
-    end
-
-    trait :with_rate_average_5 do
-      transient do
-        rates_count SubmissionRepository::REQUIRED_RATES_NUM
-      end
-
-      after(:create) do |submission, evaluator|
-        create_list(:rate, evaluator.rates_count, value: 5, submission: submission)
       end
     end
   end
