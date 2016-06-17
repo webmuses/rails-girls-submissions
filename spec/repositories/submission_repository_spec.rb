@@ -3,16 +3,22 @@ require 'rails_helper'
 describe SubmissionRepository do
   before do
     stub_const('SubmissionRepository::ACCEPTED_THRESHOLD', 3)
-  end
-  before do
     stub_const('SubmissionRepository::WAITLIST_THRESHOLD', 2)
-  end
-  before do
     stub_const('SubmissionRepository::REQUIRED_RATES_NUM', 3)
   end
 
   describe "#accepted" do
     subject { described_class.new.accepted }
+
+    context "when there are 2 submissions not rated" do
+      before do
+        2.times { FactoryGirl.create(:submission) }
+      end
+
+      it "doesn't return any submissions" do
+        expect(subject).to eq([])
+      end
+    end
 
     context "when there are no submissions with rates higher than accepted threshold" do
       before do
@@ -37,6 +43,16 @@ describe SubmissionRepository do
 
   describe "#waitlist" do
     subject { described_class.new.waitlist }
+
+    context "when there are 2 submissions not rated" do
+      before do
+        2.times { FactoryGirl.create(:submission) }
+      end
+
+      it "doesn't return any submissions" do
+        expect(subject).to eq([])
+      end
+    end
 
     context "when there are no submissions with rates higher than waitlist threshold" do
       before do

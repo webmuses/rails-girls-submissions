@@ -4,7 +4,7 @@ class SubmissionRepository
   REQUIRED_RATES_NUM = 3
 
   def rejected
-    Submission.where(rejected: true).to_a
+    Submission.where(rejected: true)
   end
 
   def rated
@@ -17,15 +17,17 @@ class SubmissionRepository
   end
 
   def accepted
-    Submission.where(rejected: false).joins(:rates).group('submissions.id').having('avg(value) >= ?', ACCEPTED_THRESHOLD).to_a
+    Submission.where(rejected: false).joins(:rates).group('submissions.id').having('count(*) >= ? AND avg(value) >= ?',
+      REQUIRED_RATES_NUM, ACCEPTED_THRESHOLD).to_a
   end
 
   def waitlist
-    Submission.where(rejected: false).joins(:rates).group('submissions.id').having('avg(value) < ? AND avg(value) >= ?',
-    ACCEPTED_THRESHOLD, WAITLIST_THRESHOLD).to_a
+    Submission.where(rejected: false).joins(:rates).group('submissions.id').having('count(*) >= ? AND avg(value) < ? AND avg(value) >= ?',
+      REQUIRED_RATES_NUM, ACCEPTED_THRESHOLD, WAITLIST_THRESHOLD).to_a
   end
 
   def unaccepted
-    Submission.joins(:rates).group('submissions.id').having('avg(value) < ?', WAITLIST_THRESHOLD).to_a
+    average_too_low = Submission.joins(:rates).group('submissions.id').having('avg(value) < ?', WAITLIST_THRESHOLD).to_a
+    average_too_low + rejected
   end
 end
