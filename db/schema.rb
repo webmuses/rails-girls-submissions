@@ -75,4 +75,6 @@ ActiveRecord::Schema.define(version: 20160606100721) do
 
   add_foreign_key "comments", "submissions"
   add_foreign_key "comments", "users"
+  add_foreign_key "rates", "submissions"
+  add_foreign_key "rates", "users"
 end
