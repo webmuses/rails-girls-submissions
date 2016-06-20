@@ -7,7 +7,13 @@ class SettingsController < ApplicationController
   end
 
   def update
-    Settings.set(params["settings"]["accepted_threshold"], params["settings"]["waitlist_threshold"], params["settings"]["required_rates_num"])
+    Settings.set(settings["accepted_threshold"], settings["waitlist_threshold"], settings["required_rates_num"])
     redirect_to :back, notice: "Settings are updated"
+  end
+
+  private
+
+  def settings
+    params.require(:settings).permit(:accepted_threshold, :waitlist_threshold, :required_rates_num)
   end
 end
