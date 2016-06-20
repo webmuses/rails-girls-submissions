@@ -17,9 +17,10 @@ describe '#user_has_already_rated?' do
     context 'when the submmission has not been rated by the user yet' do
       let!(:submission) { FactoryGirl.create(:submission) }
       let!(:user) { FactoryGirl.create(:user) }
+      let!(:user1) { FactoryGirl.create(:user) }
 
       it do
-        submission.rates << Rate.new(user_id: (user.id + 1))
+        submission.rates << Rate.new(user_id: user1.id)
         expect(subject).to equal(false)
       end
     end
