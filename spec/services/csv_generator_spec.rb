@@ -1,16 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe CsvGenerator do
+describe CsvGenerator do
   describe '#call' do
-    subject { described_class.new.call(submissions, filename).file }
+    subject { described_class.new.call(submissions, filename) }
 
-    let!(:submission_) { FactoryGirl.build(:submission) }
-    let!(:submissions) do
-      submissions = []
-      submissions << submission_ << FactoryGirl.build(:submission)
-    end
-    let!(:filename) { "submissions.csv" }
+    let!(:submissions) { FactoryGirl.build_list(:submission, 2) }
+    let!(:filename) { 'submissions.csv' }
 
-    it { expect(subject).to include submission_.email }
+    it { expect(subject.file).to include submissions.first.email }
   end
 end
