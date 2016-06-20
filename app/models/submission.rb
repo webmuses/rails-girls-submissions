@@ -7,7 +7,7 @@ class Submission < ActiveRecord::Base
   validates :email, uniqueness: true
 
   has_many :rates
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   SKILLS = ['html', 'css', 'js', 'ror', 'db', 'programming_others']
 
