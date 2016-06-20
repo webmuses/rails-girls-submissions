@@ -10,22 +10,17 @@ class Submission < ActiveRecord::Base
   has_many :comments
 
   SKILLS = ['html', 'css', 'js', 'ror', 'db', 'programming_others']
-  REQUIRED_RATES_NUM = 3
-
-  scope :rejected, -> { where(rejected: true) }
-  scope :rated, -> { where(rejected: false).joins(:rates).group(:id).having('count(*) >= ?', Submission::REQUIRED_RATES_NUM)}
-  scope :to_rate, -> { where(rejected: false).joins("LEFT JOIN rates ON submissions.id = rates.submission_id").group(:id).having('count(*) < ?', Submission::REQUIRED_RATES_NUM) }
 
   def status
-    if self.rejected
+    if rejected
       "rejected"
     else
-      self.rates.length >= REQUIRED_RATES_NUM ? "rated" : "pending"
+      rates.length >= SubmissionRepository::REQUIRED_RATES_NUM ? "rated" : "pending"
     end
   end
 
   def rated?
-    self.status == "rated"
+    status == "rated"
   end
 
   def reject
@@ -33,6 +28,6 @@ class Submission < ActiveRecord::Base
   end
 
   def average_rate
-    self.rates.sum(:value).to_f  / self.rates.count
+    rates.count == 0 ? 0 : (rates.sum(:value).to_f / rates.count)
   end
 end

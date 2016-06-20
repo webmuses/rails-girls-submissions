@@ -1,6 +1,6 @@
 class SubmissionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create, :thank_you]
-  layout 'dashboard', only: [:all, :rated, :to_rate, :rejected]
+  layout 'dashboard', only: [:all, :rated, :to_rate, :rejected, :results]
 
   # GET /submissions
   def all
@@ -10,21 +10,30 @@ class SubmissionsController < ApplicationController
   end
 
   def rated
-    submissions_rated = Submission.rated
+    submissions_rated = SubmissionRepository.new.rated
 
     render :rated, locals: { submissions_rated: submissions_rated }
   end
 
   def to_rate
-    submissions_to_rate = Submission.to_rate
+    submissions_to_rate = SubmissionRepository.new.to_rate
 
     render :to_rate, locals: { submissions_to_rate: submissions_to_rate }
   end
 
   def rejected
-    submissions_rejected = Submission.rejected
+    submissions_rejected = SubmissionRepository.new.rejected
 
     render :rejected, locals: { submissions_rejected: submissions_rejected }
+  end
+
+  def results
+    submissions_accepted = SubmissionRepository.new.accepted
+    submissions_waitlist = SubmissionRepository.new.waitlist
+    submissions_unaccepted = SubmissionRepository.new.unaccepted
+
+    render :results, locals: { submissions_accepted: submissions_accepted, submissions_waitlist: submissions_waitlist,
+    submissions_unaccepted: submissions_unaccepted }
   end
 
   # GET /submissions/1
@@ -80,7 +89,7 @@ class SubmissionsController < ApplicationController
     end
 
     def create_rate_presenters(rates)
-      rates.map { |rate| RatePresenter.new(rate, rate.user) }    
+      rates.map { |rate| RatePresenter.new(rate, rate.user) }
     end
 
     def create_comment_presenters(comments)
