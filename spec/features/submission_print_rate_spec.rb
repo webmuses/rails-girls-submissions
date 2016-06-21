@@ -4,7 +4,7 @@ let!(:submission) { FactoryGirl.create(:submission) }
 let!(:user) { FactoryGirl.create(:user) }
   context "when the submission has required number of rates" do
 
-    before { submission.rates << FactoryGirl.build_list(:rate, SubmissionRepository::REQUIRED_RATES_NUM) }
+    before { submission.rates << FactoryGirl.build_list(:rate, Settings.get.required_rates_num) }
 
     it "shows ratings in submission view" do
       sample_rate = submission.rates.sample
@@ -16,7 +16,7 @@ let!(:user) { FactoryGirl.create(:user) }
 
   context "when the submission does not have required number of rates" do
 
-    before { submission.rates << FactoryGirl.build_list(:rate, SubmissionRepository::REQUIRED_RATES_NUM-1) }
+    before { submission.rates << FactoryGirl.build_list(:rate, Settings.get.required_rates_num-1) }
 
     it "does not show rates in submission view" do
       sample_rate = submission.rates.sample
