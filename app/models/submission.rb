@@ -4,7 +4,7 @@ class Submission < ActiveRecord::Base
   validates_inclusion_of :first_time, in: [true, false]
   validates :age, numericality: { greater_than: 0, less_than: 110 }
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-  validates :email, uniqueness: true
+  validates :email, uniqueness: { case_sensitive: false }
   validates :full_name, :email, :codecademy_username, length: { maximum: 50 }
   validates :description, :goals, :problems, length: { maximum: 255 }
 
