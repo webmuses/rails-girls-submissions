@@ -18,11 +18,11 @@ FactoryGirl.define do
     programming_others :heard
     rejected false
 
-    trait :with_constants do
+    trait :with_settings do
       transient do
-        accepted_threshold SubmissionRepository::ACCEPTED_THRESHOLD
-        waitlist_threshold SubmissionRepository::WAITLIST_THRESHOLD
-        required_rates_num SubmissionRepository::REQUIRED_RATES_NUM
+        accepted_threshold  FactoryGirl.build(:settings).accepted_threshold
+        waitlist_threshold  FactoryGirl.build(:settings).waitlist_threshold
+        required_rates_num  FactoryGirl.build(:settings).required_rates_num
       end
     end
 
@@ -53,7 +53,7 @@ FactoryGirl.define do
 
     trait :with_rates do
       transient do
-        rates_count SubmissionRepository::REQUIRED_RATES_NUM
+        rates_count 3
       end
 
       after(:create) do |submission, evaluator|
