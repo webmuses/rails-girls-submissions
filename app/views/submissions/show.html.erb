@@ -106,10 +106,14 @@
     </p>
 
     <aside class="aside-widget">
-      <% (0..5).each do |rate| %>
-        <%= button_to rate, submission_rate_path(submission), params: {value: rate} %>
+      <%= form_tag("/submissions/#{submission.id}/rate", method: "post") do %>
+        <% (0..5).each do |rate| %>
+          <%= label_tag("value" + rate.to_s, rate) %>
+          <%= radio_button_tag(:value, rate) %>
+          <br>
+        <% end %>
+        <%= submit_tag("Rate!") %>
       <% end %>
-    </aside>
   </article>
 </div>
 
