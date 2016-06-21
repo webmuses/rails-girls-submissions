@@ -1,28 +1,36 @@
 describe "printing submission's rates in submission show view" do
+  let!(:submission) { FactoryGirl.create(:submission) }
+  let!(:user) { FactoryGirl.create(:user) }
 
-let!(:submission) { FactoryGirl.create(:submission) }
-let!(:user) { FactoryGirl.create(:user) }
   context "when the submission has required number of rates" do
+    let!(:sample_rate) do
+      submission.rates << FactoryGirl.build_list(:rate, SubmissionRepository::REQUIRED_RATES_NUM)
+      submission.rates.sample
+    end
+    let!(:sample_rate_presenter) { RatePresenter.new(sample_rate, sample_rate.user) }
+    let!(:sample_nickname) { sample_rate_presenter.user_nickname }
+    let!(:sample_value) { sample_rate_presenter.value }
+    let!(:rates_number) { submission.rates.size }
 
-    before { submission.rates << FactoryGirl.build_list(:rate, SubmissionRepository::REQUIRED_RATES_NUM) }
-
-    it "shows ratings in submission view" do
-      sample_rate = submission.rates.sample
+    it "shows rates in submission view" do
       login_as(user, scope: :user)
       visit submission_path(submission.id)
-      expect(page).to have_text("#{sample_rate.user.nickname} #{sample_rate.value}")
+
+      expect(page).to have_selector('table tr', count: rates_number)
+      expect(page).to have_text("#{sample_nickname}: #{sample_value}")
     end
   end
 
   context "when the submission does not have required number of rates" do
-
-    before { submission.rates << FactoryGirl.build_list(:rate, SubmissionRepository::REQUIRED_RATES_NUM-1) }
+    let!(:sample_rate) do
+      submission.rates << FactoryGirl.build_list(:rate, SubmissionRepository::REQUIRED_RATES_NUM - 1)
+      submission.rates.sample
+    end
 
     it "does not show rates in submission view" do
-      sample_rate = submission.rates.sample
       login_as(user, scope: :user)
       visit submission_path(submission.id)
-      expect(page).not_to have_text("#{sample_rate.user.nickname} #{sample_rate.value}")
+      expect(page).to have_selector('table tr', count: 0)
     end
   end
 end

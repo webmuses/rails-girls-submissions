@@ -115,11 +115,13 @@
 
 <% if submission.rated? %>
   <div> Rates: </div>
+  <table>
   <% rate_presenters.each do |presenter| %>
-    <%= presenter.user_nickname %>
-    <%= presenter.value %>
-    <br>
+  <tr>
+    <td><%= presenter.user_nickname %>: <%= presenter.value %></td>
+  </tr>
   <% end %>
+</table>
 <% end %>
 <br>
 
