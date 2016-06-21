@@ -27,9 +27,9 @@ RSpec.describe SubmissionRejector do
     end
 
     context "when some rules are broken" do
-      let!(:rules) { [Rules::EnglishRule.new, Rules::AgeRule.new] }
+      let!(:rules) { [Rules::EnglishRule.new, Rules::FirstTimeRule.new] }
       let!(:submission) do
-        FactoryGirl.create(:submission, english: "none", age: 20)
+        FactoryGirl.create(:submission, english: "none", first_time: true)
       end
 
       it "rejects the submission" do
