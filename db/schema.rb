@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606100721) do
+ActiveRecord::Schema.define(version: 20160620134123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20160606100721) do
 
   add_index "rates", ["submission_id"], name: "index_rates_on_submission_id", using: :btree
   add_index "rates", ["user_id"], name: "index_rates_on_user_id", using: :btree
+
+  create_table "settings", force: :cascade do |t|
+    t.integer  "accepted_threshold"
+    t.integer  "waitlist_threshold"
+    t.integer  "required_rates_num"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "submissions", force: :cascade do |t|
     t.string   "full_name"

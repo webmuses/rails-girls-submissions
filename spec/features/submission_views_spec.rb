@@ -2,7 +2,8 @@ describe "testing submissions views:" do
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:submission_to_rate) { FactoryGirl.create(:submission, full_name: "Applicant To Rate") }
-  let!(:submissions_rated) { FactoryGirl.create(:submission, :with_rates, full_name: "Applicant Rated") }
+  let!(:submissions_rated) { FactoryGirl.create(:submission, :rated,
+    required_rates_num: FactoryGirl.create(:settings).required_rates_num, full_name: "Applicant Rated") }
   let!(:submission_rejected) { FactoryGirl.create(:submission, rejected: true, full_name: "Applicant Rejected") }
 
   it "moves to to_rate view" do

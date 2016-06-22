@@ -1,22 +1,21 @@
 require 'rails_helper'
 
 describe SubmissionRepository do
+
   before do
-    stub_const('SubmissionRepository::ACCEPTED_THRESHOLD', 3)
-    stub_const('SubmissionRepository::WAITLIST_THRESHOLD', 2)
-    stub_const('SubmissionRepository::REQUIRED_RATES_NUM', 3)
+    allow(Settings).to receive(:get).and_return(FactoryGirl.create(:settings))
   end
 
-  let!(:constants) do
-    { accepted_threshold: SubmissionRepository::ACCEPTED_THRESHOLD,
-      waitlist_threshold: SubmissionRepository::WAITLIST_THRESHOLD,
-      required_rates_num: SubmissionRepository::REQUIRED_RATES_NUM }
+  let!(:settings_values) do
+    { accepted_threshold: FactoryGirl.build(:settings).accepted_threshold,
+      waitlist_threshold: FactoryGirl.build(:settings).waitlist_threshold,
+      required_rates_num: FactoryGirl.build(:settings).required_rates_num }
   end
 
-  let!(:accepted_submission) { FactoryGirl.create(:accepted_submission, :with_constants, constants) }
-  let!(:waitlist_submission) { FactoryGirl.create(:waitlist_submission, :with_constants, constants) }
-  let!(:unaccepted_not_rejected_submission) { FactoryGirl.create(:unaccepted_not_rejected_submission, :with_constants, constants) }
-  let!(:unaccepted_rejected_submission)  { FactoryGirl.create(:unaccepted_rejected_submission, :with_constants, constants) }
+  let!(:accepted_submission) { FactoryGirl.create(:accepted_submission, :with_settings, settings_values) }
+  let!(:waitlist_submission) { FactoryGirl.create(:waitlist_submission, :with_settings, settings_values) }
+  let!(:unaccepted_not_rejected_submission) { FactoryGirl.create(:unaccepted_not_rejected_submission, :with_settings, settings_values) }
+  let!(:unaccepted_rejected_submission)  { FactoryGirl.create(:unaccepted_rejected_submission, :with_settings, settings_values) }
   let!(:to_rate_submission) { FactoryGirl.create(:to_rate_submission) }
 
   describe "#accepted" do
