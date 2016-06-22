@@ -1,26 +1,26 @@
 class SubmissionRepository
-  ACCEPTED_THRESHOLD = 3
-  WAITLIST_THRESHOLD = 2
-  REQUIRED_RATES_NUM = 3
+  ACCEPTED_THRESHOLD = 4.5
+  WAITLIST_THRESHOLD = 3.2
+  REQUIRED_RATES_NUM = 1
 
   def rejected
     Submission.where(rejected: true)
   end
 
   def rated
-    with_rates_if_any.having('count(*) >= ?', REQUIRED_RATES_NUM).to_a
+    with_rates_if_any.having('count("rates") >= ?', REQUIRED_RATES_NUM).to_a
   end
 
   def to_rate
-    with_rates_if_any.having('count(*) < ?', REQUIRED_RATES_NUM).to_a
+    with_rates_if_any.having('count("rates") < ?', REQUIRED_RATES_NUM).to_a
   end
 
   def accepted
-    with_rates_if_any.having('count(*) >= ? AND avg(value) >= ?', REQUIRED_RATES_NUM, ACCEPTED_THRESHOLD).to_a
+    with_rates_if_any.having('count("rates") >= ? AND avg(value) >= ?', REQUIRED_RATES_NUM, ACCEPTED_THRESHOLD).to_a
   end
 
   def waitlist
-    with_rates_if_any.having('count(*) >= ? AND avg(value) < ? AND avg(value) >= ?',
+    with_rates_if_any.having('count("rates") >= ? AND avg(value) < ? AND avg(value) >= ?',
       REQUIRED_RATES_NUM, ACCEPTED_THRESHOLD, WAITLIST_THRESHOLD).to_a
   end
 
