@@ -2,7 +2,6 @@ class SubmissionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create, :thank_you]
   layout 'dashboard', only: [:all, :rated, :to_rate, :rejected, :results]
 
-  # GET /submissions
   def all
     submissions = Submission.all
 
@@ -36,7 +35,6 @@ class SubmissionsController < ApplicationController
     submissions_unaccepted: submissions_unaccepted }
   end
 
-  # GET /submissions/1
   def show
     submission = Submission.find(params[:id])
     comment = Comment.new
@@ -48,7 +46,6 @@ class SubmissionsController < ApplicationController
       comment_presenters: comment_presenters, rate_presenters: rate_presenters }
   end
 
-  # GET /submissions/new
   def new
     submission = Submission.new
 
@@ -58,7 +55,6 @@ class SubmissionsController < ApplicationController
   def thank_you
   end
 
-  # POST /submissions
   def create
     submission = Submission.new(submission_params)
 
@@ -72,7 +68,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # DELETE /submissions/1
   def destroy
     submission = Submission.find(params[:id])
     submission.destroy
