@@ -39,7 +39,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'database_cleaner'
-  gem "factory_girl_rails", "~> 4.0"
+  gem "factory_girl_rails", "~> 4.0", require: false
 
   gem 'capybara'
   gem 'capybara-screenshot'
