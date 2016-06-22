@@ -22,11 +22,6 @@ describe "printing submission's rates in submission show view" do
   end
 
   context "when the submission does not have required number of rates" do
-    let!(:sample_rate) do
-      submission.rates << FactoryGirl.build_list(:rate, SubmissionRepository::REQUIRED_RATES_NUM - 1)
-      submission.rates.sample
-    end
-
     it "does not show rates in submission view" do
       login_as(user, scope: :user)
       visit submission_path(submission.id)

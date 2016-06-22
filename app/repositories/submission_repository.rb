@@ -8,24 +8,25 @@ class SubmissionRepository
   end
 
   def rated
-    with_rates_if_any.having('count("rates") >= ?', REQUIRED_RATES_NUM).to_a
+    with_rates_if_any.having('count("rates") >= ?',  Settings.get.required_rates_num).to_a
   end
 
   def to_rate
-    with_rates_if_any.having('count("rates") < ?', REQUIRED_RATES_NUM).to_a
+    with_rates_if_any.having('count("rates") < ?', Settings.get.required_rates_num).to_a
   end
 
   def accepted
-    with_rates_if_any.having('count("rates") >= ? AND avg(value) >= ?', REQUIRED_RATES_NUM, ACCEPTED_THRESHOLD).to_a
+    with_rates_if_any.having('count("rates") >= ? AND avg(value) >= ?', Settings.get.required_rates_num,
+      Settings.get.accepted_threshold).to_a
   end
 
   def waitlist
     with_rates_if_any.having('count("rates") >= ? AND avg(value) < ? AND avg(value) >= ?',
-      REQUIRED_RATES_NUM, ACCEPTED_THRESHOLD, WAITLIST_THRESHOLD).to_a
+      Settings.get.required_rates_num, Settings.get.accepted_threshold, Settings.get.waitlist_threshold).to_a
   end
 
   def unaccepted
-    with_rates_if_any.having('avg(value) < ?', WAITLIST_THRESHOLD).to_a + rejected
+    with_rates_if_any.having('avg(value) < ?', Settings.get.waitlist_threshold).to_a + rejected
   end
 
   private
