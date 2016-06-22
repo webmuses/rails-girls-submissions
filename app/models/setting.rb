@@ -1,5 +1,4 @@
-class Settings < ActiveRecord::Base
-
+class Setting < ActiveRecord::Base
   def self.get
     self.first || self.create({
       accepted_threshold: 0,

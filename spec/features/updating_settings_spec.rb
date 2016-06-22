@@ -9,8 +9,8 @@ describe "testing updating settings:" do
     fill_in 'Waitlist threshold', with: 6
     fill_in 'Required rates num', with: 6
     click_button "Save settings"
-    expect(Settings.get.accepted_threshold).to eq(6)
-    expect(Settings.get.waitlist_threshold).to eq(6)
-    expect(Settings.get.required_rates_num).to eq(6)
+    expect(Setting.get.accepted_threshold).to eq(6)
+    expect(Setting.get.waitlist_threshold).to eq(6)
+    expect(Setting.get.required_rates_num).to eq(6)
   end
 end

@@ -1,10 +1,11 @@
 describe "printing submission's rates in submission show view" do
   let!(:submission) { FactoryGirl.create(:submission) }
   let!(:user) { FactoryGirl.create(:user) }
+  let!(:setting) { FactoryGirl.create(:setting) }
 
   context "when the submission has required number of rates" do
     let!(:sample_rate) do
-      submission.rates << FactoryGirl.build_list(:rate, SubmissionRepository::REQUIRED_RATES_NUM)
+      submission.rates << FactoryGirl.build_list(:rate, setting.required_rates_num)
       submission.rates.sample
     end
     let!(:sample_rate_presenter) { RatePresenter.new(sample_rate, sample_rate.user) }
