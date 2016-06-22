@@ -1,29 +1,28 @@
 class SubmissionRepository
-
   def rejected
     Submission.where(rejected: true)
   end
 
   def rated
-    with_rates_if_any.having('count(*) >= ?',  Settings.get.required_rates_num).to_a
+    with_rates_if_any.having('count("rates") >= ?',  Setting.get.required_rates_num).to_a
   end
 
   def to_rate
-    with_rates_if_any.having('count(*) < ?', Settings.get.required_rates_num).to_a
+    with_rates_if_any.having('count("rates") < ?', Setting.get.required_rates_num).to_a
   end
 
   def accepted
-    with_rates_if_any.having('count(*) >= ? AND avg(value) >= ?', Settings.get.required_rates_num,
-      Settings.get.accepted_threshold).to_a
+    with_rates_if_any.having('count("rates") >= ? AND avg(value) >= ?', Setting.get.required_rates_num,
+      Setting.get.accepted_threshold).to_a
   end
 
   def waitlist
-    with_rates_if_any.having('count(*) >= ? AND avg(value) < ? AND avg(value) >= ?',
-      Settings.get.required_rates_num, Settings.get.accepted_threshold, Settings.get.waitlist_threshold).to_a
+    with_rates_if_any.having('count("rates") >= ? AND avg(value) < ? AND avg(value) >= ?',
+      Setting.get.required_rates_num, Setting.get.accepted_threshold, Setting.get.waitlist_threshold).to_a
   end
 
   def unaccepted
-    with_rates_if_any.having('avg(value) < ?', Settings.get.waitlist_threshold).to_a + rejected
+    with_rates_if_any.having('avg(value) < ?', Setting.get.waitlist_threshold).to_a + rejected
   end
 
   private
