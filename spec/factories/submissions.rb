@@ -20,9 +20,9 @@ FactoryGirl.define do
 
     trait :with_settings do
       transient do
-        accepted_threshold  FactoryGirl.create(:settings).accepted_threshold
-        waitlist_threshold  FactoryGirl.create(:settings).waitlist_threshold
-        required_rates_num  FactoryGirl.create(:settings).required_rates_num
+        accepted_threshold  4
+        waitlist_threshold  3
+        required_rates_num  3
       end
     end
 
@@ -53,7 +53,7 @@ FactoryGirl.define do
 
     trait :rated do
       transient do
-        required_rates_num FactoryGirl.create(:settings).required_rates_num
+        required_rates_num 3
       end
 
       after(:create) do |submission, evaluator|
