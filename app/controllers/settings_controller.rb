@@ -7,15 +7,13 @@ class SettingsController < ApplicationController
   end
 
   def update
-    Setting.set(settings["accepted_threshold"], settings["waitlist_threshold"], settings["required_rates_num"],
-      settings["beginning_of_preparation_period"], settings["beginning_of_registration_period"],
-      settings["beginning_of_closed_period"])
+    Setting.set(setting_params)
     redirect_to :back, notice: "Settings are updated"
   end
 
   private
 
-  def settings
+  def setting_params
     params.require(:setting).permit(:accepted_threshold, :waitlist_threshold, :required_rates_num,
       :beginning_of_preparation_period, :beginning_of_registration_period, :beginning_of_closed_period)
   end
