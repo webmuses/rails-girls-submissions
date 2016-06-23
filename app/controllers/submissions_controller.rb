@@ -47,9 +47,14 @@ class SubmissionsController < ApplicationController
   end
 
   def new
-    submission = Submission.new
-
-    render :new, locals: { submission: submission }
+    if Setting.get.beginning_of_preparation_period <= Time.now && Time.now < Setting.get.beginning_of_registration_period
+      render :preparation
+    elsif Setting.get.beginning_of_registration_period <= Time.now && Time.now < Setting.get.beginning_of_closed_period
+      submission = Submission.new
+      render :new, locals: { submission: submission }
+    else
+      render :closed
+    end
   end
 
   def thank_you
