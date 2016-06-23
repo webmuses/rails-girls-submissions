@@ -18,4 +18,14 @@ class Setting < ActiveRecord::Base
     settings.beginning_of_closed_period = beginning_of_closed_period
     settings.save!
   end
+
+  def self.preparation_period?
+    settings = self.get
+    settings.beginning_of_preparation_period <= Time.now && Time.now < settings.beginning_of_registration_period
+  end
+
+  def self.registration_period?
+    settings = self.get
+    settings.beginning_of_registration_period <= Time.now && Time.now < settings.beginning_of_closed_period
+  end
 end
