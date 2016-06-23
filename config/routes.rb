@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/submissions/rejected", to: "submissions#rejected"
   get "/submissions/results", to: "submissions#results"
   get "/settings/", to: "settings#index"
+  get "/results_emails/send_emails", to: "results_emails#send_emails"
   put "/settings/update", to: "settings#update"
 
   get "/csv/download_accepted", to: "csv#download_accepted"
