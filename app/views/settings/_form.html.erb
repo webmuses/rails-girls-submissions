@@ -11,5 +11,17 @@
     <%= f.label :required_rates_num %>
     <%= f.number_field :required_rates_num %>
   </div>
+  <div class="form-field">
+    <%= f.label :beginning_of_preparation_period %>
+    <%= f.date_field :beginning_of_preparation_period %>
+  </div>
+  <div class="form-field">
+    <%= f.label :beginning_of_registration_period %>
+    <%= f.date_field :beginning_of_registration_period %>
+  </div>
+  <div class="form-field">
+    <%= f.label :beginning_of_closed_period %>
+    <%= f.date_field :beginning_of_closed_period %>
+  </div>
   <%= f.submit "Save settings" %>
 <% end  %>
