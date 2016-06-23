@@ -8,9 +8,15 @@ describe "testing updating settings:" do
     fill_in 'Accepted threshold', with: 6
     fill_in 'Waitlist threshold', with: 6
     fill_in 'Required rates num', with: 6
+    fill_in 'Beginning of preparation period', with: "2016/06/23"
+    fill_in 'Beginning of registration period', with: "2016/06/23"
+    fill_in 'Beginning of closed period', with: "2016/06/23"
     click_button "Save settings"
     expect(Setting.get.accepted_threshold).to eq(6)
     expect(Setting.get.waitlist_threshold).to eq(6)
     expect(Setting.get.required_rates_num).to eq(6)
+    expect(Setting.get.beginning_of_preparation_period).to eq("Thu, 23 Jun 2016 00:00:00 CEST +02:00")
+    expect(Setting.get.beginning_of_registration_period).to eq("Thu, 23 Jun 2016 00:00:00 CEST +02:00")
+    expect(Setting.get.beginning_of_closed_period).to eq("Thu, 23 Jun 2016 00:00:00 CEST +02:00")
   end
 end
