@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620134123) do
+ActiveRecord::Schema.define(version: 20160623092023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,11 @@ ActiveRecord::Schema.define(version: 20160620134123) do
     t.integer  "accepted_threshold"
     t.integer  "waitlist_threshold"
     t.integer  "required_rates_num"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.datetime "beginning_of_preparation_period"
+    t.datetime "beginning_of_registration_period"
+    t.datetime "beginning_of_closed_period"
   end
 
   create_table "submissions", force: :cascade do |t|
