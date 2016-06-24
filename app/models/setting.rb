@@ -1,4 +1,5 @@
 class Setting < ActiveRecord::Base
+
   def self.get
     self.first || self.create({
       accepted_threshold: 0,
@@ -15,6 +16,7 @@ class Setting < ActiveRecord::Base
     settings.beginning_of_preparation_period = setting_params[:beginning_of_preparation_period]
     settings.beginning_of_registration_period = setting_params[:beginning_of_registration_period]
     settings.beginning_of_closed_period = setting_params[:beginning_of_closed_period]
+
     settings.save!
   end
 
