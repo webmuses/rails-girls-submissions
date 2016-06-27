@@ -6,9 +6,9 @@ class Setting < ActiveRecord::Base
       accepted_threshold: 0,
       waitlist_threshold: 0,
       required_rates_num: 3,
-      beginning_of_preparation_period: "2016-06-21 00:00:00 +0200",
-      beginning_of_registration_period: "2016-06-22 00:00:00 +0200",
-      beginning_of_closed_period: "2016-06-23 00:00:00 +0200"
+      beginning_of_preparation_period: "Thu, 21 Jun 2016 00:00:00 CEST +02:00",
+      beginning_of_registration_period: "Thu, 22 Jun 2016 00:00:00 CEST +02:00",
+      beginning_of_closed_period: "Thu, 23 Jun 2016 00:00:00 CEST +02:00"
     })
   end
 
