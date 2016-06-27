@@ -10,13 +10,13 @@
 </thead>
 
 <tbody class="submissions-table-body">
-  <% submissions.each do |submission| %>
+  <% submission_presenters.each do |submission| %>
   <tr>
     <td class="submission-body-name"><%= submission.full_name %></td>
     <td class="submission-mobile-hidden"><%= submission.age %></td>
-    <td class="submission-mobile-hidden"><%= submission.average_rate.round(2) if submission.rated? %></td>
-    <td class="submission-mobile-hidden"><%= submission.rates.count %></td>
-    <td class="submission-mobile-hidden"><%= submission.created_at.strftime("%m-%d-%Y") %></td>
+    <td class="submission-mobile-hidden"><%= submission.average_rate %></td>
+    <td class="submission-mobile-hidden"><%= submission.rates_count %></td>
+    <td class="submission-mobile-hidden"><%= submission.created_at %></td>
     <td><%= link_to 'Show', submission %></td>
   </tr>
   <% end %>
