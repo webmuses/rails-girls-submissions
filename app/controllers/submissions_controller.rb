@@ -5,7 +5,7 @@ class SubmissionsController < ApplicationController
   def all
     submissions = Submission.all
 
-    render :all, locals: { submissions: submissions }
+    render :all, locals: { submission_presenters: create_submission_presenters(submissions) }
   end
 
   def rated
@@ -94,5 +94,9 @@ class SubmissionsController < ApplicationController
 
     def create_comment_presenters(comments)
       comments.map { |comment| CommentPresenter.new(comment, comment.user) }
+    end
+
+    def create_submission_presenters(submissions)
+      submissions.map { |submission| SubmissionPresenter.new(submission, submission.rates) }
     end
 end
