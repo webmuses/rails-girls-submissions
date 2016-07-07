@@ -4,6 +4,10 @@ $input-height: $bs2;
   margin: 2 * $input-height 0;
 }
 
+.form-centered {
+  text-align: center;
+}
+
 .form-header {
   text-align: center;
   margin-bottom: 2 * $input-height;
@@ -86,6 +90,10 @@ $input-height: $bs2;
     vertical-align: middle;
     margin-bottom: 0;
   }
+}
+
+.form-field-close {
+  margin-bottom: $input-height/2;
 }
 
 /* styles for errors in forms */
