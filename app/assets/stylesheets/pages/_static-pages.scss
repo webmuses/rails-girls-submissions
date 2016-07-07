@@ -1,3 +1,13 @@
+.l-static-container-whole {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  img {
+    max-width: 100%;
+  }
+}
+
 .l-static-container {
   width: 100%;
   margin-top: $bs3;
@@ -23,4 +33,9 @@
   background-image: image-url('fb.png');
   background-size: auto auto;
   padding-top: 350px;
+}
+
+.soon-page {
+  background-color: $rg-red;
+  text-align: center;
 }
