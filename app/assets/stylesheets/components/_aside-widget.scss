@@ -3,10 +3,25 @@
   margin: $bs2 0;
 
   @include media($big-screen) {
-    position: fixed;
     width: 400px;
-    top: 2 * $bs2;
+  }
+}
+
+.aside-widget-fixed {
+
+  @include media($big-screen) {
+    position: fixed;
     right: 10%;
+    top: 2 * $bs2;
+  }
+}
+
+.aside-widget-absolute {
+
+  @include media($big-screen) {
+    position: absolute;
+    right: -100%;
+    top: 0;
   }
 }
 
@@ -19,4 +34,8 @@
     font-size: $bs1;
     font-weight: 400;
   }
+}
+
+.aside-widget-header {
+  margin-bottom: $bs-1;
 }
