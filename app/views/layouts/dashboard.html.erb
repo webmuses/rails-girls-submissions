@@ -8,16 +8,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<%= render 'layouts/header' %>
+  <%= render 'layouts/header' %>
 
-<div class="l-wrapper">
-  <article class="l-submissions-container">
-    <%= render 'layouts/filters' %>
-    <%= yield %>
-  </article>
-</div>
-
+  <div class="l-wrapper">
+    <article class="l-submissions-container">
+      <%= render 'layouts/filters' %>
+      <%= yield %>
+    </article>
+  </div>
 </body>
 </html>

@@ -69,8 +69,17 @@
 
 .submissions-table {
   width: 100%;
-  border: 2px solid $grey-default;
+  border-left: 2px solid $grey-default;
+  border-right: 2px solid $grey-default;
   border-spacing: 2rem;
+
+  &:first-of-type {
+    border-top: 2px solid $grey-default;
+  }
+
+  &:last-of-type {
+    border-bottom: 2px solid $grey-default;
+  }
 }
 
 .submission-mobile-hidden {
