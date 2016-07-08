@@ -32,7 +32,8 @@ $input-height: $bs2;
   input[type="text"],
   input[type="email"],
   input[type="search"],
-  input[type="number"] {
+  input[type="number"],
+  input[type="date"] {
     width: 100%;
     display: block;
     line-height: $input-height;
@@ -53,6 +54,7 @@ $input-height: $bs2;
   }
 
   input[type="submit"] {
+    display: block;
     margin: $bs1 auto;
   }
 
