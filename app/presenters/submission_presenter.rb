@@ -1,14 +1,19 @@
 class SubmissionPresenter < SimpleDelegator
-  def initialize(submission, rates)
+  def initialize(submission, rates, submission_repository)
     super(submission)
     @rates = rates
+    @submission_repository = submission_repository
   end
 
   def average_rate
+<<<<<<< Updated upstream
     if rated?
       average = @rates.count == 0 ? 0 : (@rates.sum(:value).to_f / @rates.count)
       average.round(2)
     end
+=======
+    average_rate.round(2) if rated?
+>>>>>>> Stashed changes
   end
 
   def rates_count
@@ -18,5 +23,13 @@ class SubmissionPresenter < SimpleDelegator
   def created_at
     submission = __getobj__
     submission.created_at.strftime("%m-%d-%Y")
+  end
+
+  def next_to_rate
+    @submission_repository.next_to_rate(created_at)
+  end
+
+  def previous_to_rate
+    @submission_repository.previous_to_rate(created_at)
   end
 end

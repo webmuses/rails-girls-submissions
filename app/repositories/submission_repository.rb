@@ -11,12 +11,14 @@ class SubmissionRepository
     to_rate_scope.to_a
   end
 
-  def next_to_rate(current_id)
-    to_rate_scope.where('submissions.id > ?', current_id).order('id ASC').first || to_rate_scope.first
+  def next_to_rate(current_created_at)
+    to_rate_scope.where('submissions.created_at > ?', current_created_at).order('created_at ASC')
+      .first || to_rate_scope.first
   end
 
-  def previous_to_rate(current_id)
-    to_rate_scope.where('submissions.id < ?', current_id).order('id DESC').first || to_rate_scope.last
+  def previous_to_rate(current_created_at)
+    to_rate_scope.where('submissions.created_at < ?', current_created_at).order('created_at DESC')
+      .first || to_rate_scope.last
   end
 
   def accepted
@@ -36,15 +38,19 @@ class SubmissionRepository
   private
 
   def rated_scope
-    with_rates_if_any.having('count("rates") >= ?',  Setting.get.required_rates_num)
+    with_rates_if_any.having('count("rates") >= ?',  required_rates_number)
   end
 
   def to_rate_scope
-    with_rates_if_any.having('count("rates") < ?', Setting.get.required_rates_num)
+    with_rates_if_any.having('count("rates") < ?', required_rates_number)
   end
 
   def with_rates_if_any
     Submission.where(rejected: false).joins("LEFT JOIN rates ON submissions.id = rates.submission_id").
       group('submissions.id')
+  end
+
+  def required_rates_number
+    Setting.get.required_rates_num
   end
 end
