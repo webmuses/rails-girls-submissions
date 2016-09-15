@@ -6,7 +6,10 @@ class SubmissionPresenter < SimpleDelegator
   end
 
   def average_rate
-    average_rate.round(2) if rated?
+    if rated?
+      average = @rates.count == 0 ? 0 : (@rates.sum(:value).to_f / @rates.count)
+      average.round(2)
+    end
   end
 
   def rates_count
