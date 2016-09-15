@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe SubmissionPresenter do
-  subject { described_class.new(submission, rates) }
+  subject { described_class.new(submission, rates, submissions_repository) }
   let!(:rates) { submission.rates }
+  let!(:submissions_repository) { double }
 
   describe do
     let!(:submission) { FactoryGirl.build(:submission) }
