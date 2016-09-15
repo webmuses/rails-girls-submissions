@@ -28,6 +28,8 @@ class SubmissionPresenter < SimpleDelegator
     @submission_repository.previous_to_rate(submission.created_at)
   end
 
+  private
+
   def submission
     __getobj__
   end
