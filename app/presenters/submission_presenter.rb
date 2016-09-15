@@ -14,15 +14,18 @@ class SubmissionPresenter < SimpleDelegator
   end
 
   def created_at
-    submission = __getobj__
     submission.created_at.strftime("%m-%d-%Y")
   end
 
   def next_to_rate
-    @submission_repository.next_to_rate(created_at)
+    @submission_repository.next_to_rate(submission.created_at)
   end
 
   def previous_to_rate
-    @submission_repository.previous_to_rate(created_at)
+    @submission_repository.previous_to_rate(submission.created_at)
+  end
+
+  def submission
+    __getobj__
   end
 end
