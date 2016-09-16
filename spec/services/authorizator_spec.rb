@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Authorizator do
   describe '#allowed_to_log_in?' do
-    let!(:test_email) { "jo.wojtowicz@gmail.com" }
+    let!(:test_email) { "test@example.com" }
 
     subject { described_class.new.allowed_to_log_in?(user) }
 

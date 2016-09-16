@@ -1,2 +1,3 @@
 allowed_users:
   - user@example.org
+  - test@example.com
