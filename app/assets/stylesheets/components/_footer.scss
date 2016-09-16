@@ -1,0 +1,17 @@
+$footer-height: $bs3;
+
+body {
+  margin: 0;
+  margin-bottom: -$footer-height;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  height: $footer-height;
+  line-height: $footer-height;
+  vertical-align: middle;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}

@@ -9,8 +9,8 @@
 }
 
 .l-static-container {
+  position: relative;
   width: 100%;
-  margin-top: $bs3;
   text-align: center;
 
   .btn-small {
@@ -19,20 +19,20 @@
 
   @include media($tablet) {
 
-    background: center top no-repeat;
+    background: center $bs3 no-repeat;
   }
 }
 
 .login-page {
   background-image: image-url('rails-girls-krakow-2016.png');
   background-size: auto 500px;
-  padding-top: 550px;
+  padding-top: 600px;
 }
 
 .closed-page {
   background-image: image-url('fb.png');
   background-size: auto auto;
-  padding-top: 350px;
+  padding-top: 400px;
 }
 
 .soon-page {
