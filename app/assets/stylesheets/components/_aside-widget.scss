@@ -1,4 +1,5 @@
 .aside-widget {
+  @include clearfix();
   text-align: center;
   margin: $bs2 auto;
 
