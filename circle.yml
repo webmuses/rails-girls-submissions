@@ -4,6 +4,7 @@ machine:
 checkout:
   post:
     - cp config/secrets.yml.example config/secrets.yml
+    - cp config/allowed_users.yml.example config/allowed_users.yml
 deployment:
   demo:
     branch: master
