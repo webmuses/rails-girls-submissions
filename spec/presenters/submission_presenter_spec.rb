@@ -47,4 +47,22 @@ RSpec.describe SubmissionPresenter do
       it { expect(subject.average_rate).to eq(2) }
     end
   end
+
+  describe "delegates methods to submissions_repository" do
+    let!(:submission) { FactoryGirl.create(:submission) }
+
+    context "#next_to_rate" do
+      it do
+        expect(submissions_repository).to receive(:next_to_rate).with(submission.created_at)
+        subject.next_to_rate
+      end
+    end
+
+    context "#previous_to_rate" do
+      it do
+        expect(submissions_repository).to receive(:previous_to_rate).with(submission.created_at)
+        subject.previous_to_rate
+      end
+    end
+  end
 end
