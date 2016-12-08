@@ -24,7 +24,7 @@ $input-height: $bs2;
   > legend {
     display: block;
     margin-bottom: $bs-2;
-    color: $rg-navy;
+    color: $accent-color;
     font-weight: 700;
   }
 
@@ -43,7 +43,7 @@ $input-height: $bs2;
 
     &:focus {
       outline: none;
-      border: 1px solid $rg-navy;
+      border: 1px solid $accent-color;
     }
 
     &.event-url-field {
@@ -86,8 +86,8 @@ $input-height: $bs2;
 }
 
 .form-field-boolean {
-  border-top: 1px dotted $rg-navy;
-  border-bottom: 1px dotted $rg-navy;
+  border-top: 1px dotted $accent-color;
+  border-bottom: 1px dotted $accent-color;
   padding: $baseline 0;
 
   label {
@@ -123,7 +123,7 @@ $input-height: $bs2;
 .form-error-box {
   margin: $bs1 0;
   padding: 0 $bs1;
-  border: 1px dotted $rg-red;
+  border: 1px dotted $main-color;
 }
 
 .form-error-header {
@@ -138,7 +138,7 @@ $input-height: $bs2;
 .field_with_errors {
 
   label {
-    color: $rg-red;
+    color: $main-color;
   }
 
   textarea,
@@ -146,10 +146,10 @@ $input-height: $bs2;
   input[type="email"],
   input[type="search"],
   input[type="number"] {
-    border: 1px solid $rg-red;
+    border: 1px solid $main-color;
 
     &:focus {
-      border: 1px solid $rg-red;
+      border: 1px solid $main-color;
     }
   }
 }

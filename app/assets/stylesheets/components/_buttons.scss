@@ -2,7 +2,7 @@
   @include appearance(none);
   display: inline-block;
   padding: $baseline $bs1;
-  background-color: $rg-red;
+  background-color: $main-color;
   border: none;
   font-size: $baseline;
   color: white;
@@ -12,7 +12,7 @@
   &:active,
   &:focus {
     transition: background-color .4s;
-    background-color: lighten($rg-red, 10);
+    background-color: lighten($main-color, 10);
     color: white;
     text-decoration: none;
   }
@@ -60,7 +60,7 @@
     &:hover,
     &:focus,
     &:active {
-      outline: 1px dotted $rg-red;
+      outline: 1px dotted $main-color;
     }
 
     &:after {

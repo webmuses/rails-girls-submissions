@@ -56,8 +56,8 @@
   a:hover,
   a:focus,
   a.active {
-    color: $rg-red;
-    border: 2px solid $rg-red;
+    color: $main-color;
+    border: 2px solid $main-color;
   }
 
   @include media($tablet) {
@@ -93,7 +93,7 @@
 .submissions-table-header {
 
   th {
-    border-bottom: 2px solid $rg-red;
+    border-bottom: 2px solid $main-color;
     padding: $bs2 0 $bs-1;
 
     &:last-child {

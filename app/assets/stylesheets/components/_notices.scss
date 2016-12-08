@@ -6,7 +6,7 @@
   line-height: $bs2;
   text-align: center;
   color: white;
-  background-color: $rg-red;
+  background-color: $main-color;
 
   @include media($desktop) {
     float: left;

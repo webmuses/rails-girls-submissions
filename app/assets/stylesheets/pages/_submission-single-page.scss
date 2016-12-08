@@ -47,7 +47,7 @@
 .submission-rating-form {
   margin-bottom: $bs1;
   padding-bottom: $bs1;
-  border-bottom: 2px solid $rg-red;
+  border-bottom: 2px solid $main-color;
   line-height: $bs3;
 
   > * {
@@ -59,7 +59,7 @@
   margin-top: $bs1;
   text-align: left;
   padding-bottom: $bs1;
-  border-bottom: 2px solid $rg-red;
+  border-bottom: 2px solid $main-color;
 }
 
 .submission-rate {
@@ -72,7 +72,7 @@
 
 .submission-rate-value {
   padding-left: $bs-2;
-  color: $rg-red;
+  color: $main-color;
 }
 
 .submission-rate-avg {
@@ -82,14 +82,14 @@
 }
 
 .submission-rate-avg-number {
-  color: $rg-red;
+  color: $main-color;
 }
 
 .submission-navigation {
   @include clearfix();
   display: block;
   padding-bottom: $bs1;
-  border-bottom: 2px solid $rg-red;
+  border-bottom: 2px solid $main-color;
 }
 
 .link-prev {

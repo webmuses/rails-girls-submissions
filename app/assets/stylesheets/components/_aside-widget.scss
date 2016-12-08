@@ -42,7 +42,7 @@
 
 .aside-widget-text {
   display: block;
-  color: $rg-red;
+  color: $main-color;
   font-size: $baseline;
 
   @include media($big-screen) {
