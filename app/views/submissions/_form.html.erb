@@ -25,36 +25,9 @@
     <%= f.number_field :age %>
   </div>
   <div class="form-field">
-    <%= f.label :codecademy_username %>
-    <%= f.text_field :codecademy_username %>
-  </div>
-  <div class="form-field">
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
-
-  <% Submission::SKILLS.each do |skill| %>
-    <fieldset class="form-field form-field-collection">
-      <legend>How well do you know <%= skill %>?</legend>
-
-      <div>
-        <%= f.radio_button skill, :never %>
-        <%= f.label skill, "Never heard of it", value: "never" %>
-      </div>
-      <div>
-        <%= f.radio_button skill, :heard %>
-        <%= f.label skill, "Heard of it", value: "heard" %>
-      </div>
-      <div>
-        <%= f.radio_button skill, :used %>
-        <%= f.label skill, "I used it", value: "used" %>
-      </div>
-      <div>
-        <%= f.radio_button skill, :fluent %>
-        <%= f.label skill, "Very well", value: "fluent" %>
-      </div>
-    </fieldset>
-  <% end %>
 
   <fieldset class="form-field form-field-collection">
     <legend>What is your English level?</legend>
@@ -72,34 +45,6 @@
     </div>
   </fieldset>
 
-  <fieldset class="form-field form-field-collection">
-    <legend>What is your operating system?</legend>
-    <div>
-      <%= f.radio_button :operating_system, :mac %>
-      <%= f.label :operating_system, "Mac OS", value: "mac" %>
-    </div>
-    <div>
-      <%= f.radio_button :operating_system, :linux %>
-      <%= f.label :operating_system, "Linux", value: "linux" %>
-    </div>
-    <div>
-      <%= f.radio_button :operating_system, :windows %>
-      <%= f.label :operating_system, "Windows", value: "windows" %>
-    </div>
-  </fieldset>
-
-  <div class="form-field form-field-boolean">
-    <%= f.check_box :first_time %>
-    <%= f.label :first_time, "I did not take part in Rails Girls before" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :goals %>
-    <%= f.text_area :goals, class: "textarea-small" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :problems %>
-    <%= f.text_area :problems, class: "textarea-small" %>
-  </div>
   <div class="form-field">
     <%= f.submit "Apply for workshop", class: "btn-small" %>
   </div>

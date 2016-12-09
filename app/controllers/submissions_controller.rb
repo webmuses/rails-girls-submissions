@@ -90,10 +90,7 @@ class SubmissionsController < ApplicationController
 
   private
     def submission_params
-      params.require(:submission).permit(:full_name, :email, :age,
-      :codecademy_username, :description, :html, :css, :js, :ror, :db,
-      :programming_others, :english, :operating_system, :first_time, :goals,
-      :problems)
+      params.require(:submission).permit(:full_name, :email, :age, :description,:english)
     end
 
     def create_rate_presenters(rates)
