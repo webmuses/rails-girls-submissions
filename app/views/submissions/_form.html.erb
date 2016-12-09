@@ -1,5 +1,5 @@
 <%= form_for(submission, html: { class: "form" }) do |f| %>
-  <h1 class="form-header">Apply for Rails Girls workshop</h1>
+  <h1 class="form-header">Weź udział w warsztatach HTML+CSS</h1>
   <% if submission.errors.any? %>
     <div class="form-error-box">
       <h2 class="form-error-header"><%= pluralize(submission.errors.count, "field") %> need to be corrected</h2>
@@ -13,7 +13,7 @@
   <% end %>
 
   <div class="form-field">
-    <%= f.label :full_name %>
+    <%= f.label :full_name, value: "Imię i nazwisko" %>
     <%= f.text_field :full_name %>
   </div>
   <div class="form-field">
@@ -21,31 +21,31 @@
     <%= f.text_field :email %>
   </div>
   <div class="form-field">
-    <%= f.label :age %>
+    <%= f.label :age, value: "Wiek" %>
     <%= f.number_field :age %>
   </div>
   <div class="form-field">
-    <%= f.label :description %>
+    <%= f.label :description, value: "Czemu chcesz wziąć udział w warsztatach?" %>
     <%= f.text_area :description %>
   </div>
 
   <fieldset class="form-field form-field-collection">
-    <legend>What is your English level?</legend>
+    <legend>Jak dobrze znasz język angielski?</legend>
     <div>
       <%= f.radio_button :english, :none %>
-      <%= f.label :english, "I don't speak English", value: "none" %>
+      <%= f.label :english, "Nie mówię po angielsku.", value: "none" %>
     </div>
     <div>
       <%= f.radio_button :english, :basic %>
-      <%= f.label :english, "Basic", value: "basic" %>
+      <%= f.label :english, "Mam podstawową wiedzę.", value: "basic" %>
     </div>
     <div>
       <%= f.radio_button :english, :fluent %>
-      <%= f.label :english, "Fluent", value: "fluent" %>
+      <%= f.label :english, "Dobrze mówię po angielsku.", value: "fluent" %>
     </div>
   </fieldset>
 
   <div class="form-field">
-    <%= f.submit "Apply for workshop", class: "btn-small" %>
+    <%= f.submit "Wyślij zgłoszenie", class: "btn-small" %>
   </div>
 <% end %>
