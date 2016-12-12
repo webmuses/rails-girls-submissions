@@ -2,7 +2,7 @@
   <h1 class="form-header">Weź udział w warsztatach HTML+CSS</h1>
   <% if submission.errors.any? %>
     <div class="form-error-box">
-      <h2 class="form-error-header"><%= pluralize(submission.errors.count, "field") %> need to be corrected</h2>
+      <h2 class="form-error-header"><%= pluralize(submission.errors.count, "field") %> muszą zostać poprawione</h2>
 
       <ul class="form-error-list">
       <% submission.errors.full_messages.each do |message| %>
