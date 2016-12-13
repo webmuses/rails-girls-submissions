@@ -2,7 +2,7 @@
   <h1 class="form-header">Weź udział w warsztatach HTML+CSS</h1>
   <% if submission.errors.any? %>
     <div class="form-error-box">
-      <h2 class="form-error-header"><%= pluralize(submission.errors.count, "field") %> muszą zostać poprawione</h2>
+      <h2 class="form-error-header">Popraw błędy :(</h2>
 
       <ul class="form-error-list">
       <% submission.errors.full_messages.each do |message| %>
@@ -13,22 +13,28 @@
   <% end %>
 
   <div class="form-field">
-    <%= f.label :full_name, value: "Imię i nazwisko" %>
+    <%= f.label :full_name, "Imię i nazwisko" %>
     <%= f.text_field :full_name %>
   </div>
   <div class="form-field">
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.email_field :email %>
   </div>
   <div class="form-field">
-    <%= f.label :age, value: "Wiek" %>
+    <%= f.label :age, "Wiek" %>
     <%= f.number_field :age %>
   </div>
+
   <div class="form-field">
-    <%= f.label :description, value: "Czemu chcesz wziąć udział w warsztatach?" %>
+    <%= f.label :description, "Czym się zajmujesz? Co lubisz robić w wolnym czasie?" %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="form-field">
+    <%= f.label :goals, "Czemu chcesz wziąć udział w warsztatach?" %>
     <p>Jak planujesz wykorzystać zdobytą wiedzę? UWAGA: To pytanie jest decydujące, więc postaraj się szczerze na nie odpowiedzieć!
     Pomocny może się okazać nasz <a target="_blank" href="http://theawwwesomes.org/poradnik/">poradnik</a>.</p>
-    <%= f.text_area :description %>
+    <%= f.text_area :goals %>
   </div>
 
   <fieldset class="form-field form-field-collection">
