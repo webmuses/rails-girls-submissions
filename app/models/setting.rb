@@ -2,15 +2,15 @@ class Setting < ActiveRecord::Base
   validate :preparation_is_before_registration, :registration_is_before_closed
 
   def self.get
-    self.first || self.create({
+    self.last || self.create({
       accepted_threshold: 0,
       waitlist_threshold: 0,
       required_rates_num: 3,
       beginning_of_preparation_period: "Thu, 21 Jun 2016 00:00:00 CEST +02:00",
-      beginning_of_registration_period: "Thu, 22 Jun 2016 00:00:00 CEST +02:00",
-      beginning_of_closed_period: "Thu, 23 Jun 2016 00:00:00 CEST +02:00",
-      event_start_date: "Sat, 16 Apr 2016",
-      event_end_date: "Sun, 17 Apr 2016",
+      beginning_of_registration_period: "Mon, 19 Dec 2016 00:00:00 CEST +02:00",
+      beginning_of_closed_period: "Mon, 02 Jan 2017 00:00:00 CEST +02:00",
+      event_start_date: "Tue, 10 Jan 2017",
+      event_end_date: "Tue, 11 Jan 2017",
       event_url: "railsgirls.com/krakow"
     })
   end
