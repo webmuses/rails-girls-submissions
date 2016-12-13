@@ -11,27 +11,27 @@ pl:
         submission:
           attributes:
             age:
-              blank: 'jest wymagany'
+              blank: jest wymagany
               greater_than_or_equal_to: '- musisz mieć conajmniej %{count} lat'
             full_name:
-              blank: 'jest wymagane'
+              blank: jest wymagane
             goals:
-              blank: 'jest wymagany'
+              blank: jest wymagany
             description:
-              blank: 'jest wymagany'
+              blank: jest wymagany
             english:
-              blank: 'jest wymagany'
+              blank: jest wymagany
             email:
-              invalid: 'jest nieprawidłowy'
+              invalid: jest nieprawidłowy
     models:
       submission: Zgłoszenie
     attributes:
       submission:
-        full_name: "Imię i nazwisko"
-        age: "Wiek"
-        goals: "Cel"
-        description: "Opis"
-        english: "Poziom angielskiego"
+        full_name: Imię i nazwisko
+        age: Wiek
+        goals: Cel
+        description: Opis
+        english: Poziom angielskiego
   date:
     abbr_day_names:
     - nie
