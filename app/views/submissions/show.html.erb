@@ -66,6 +66,12 @@
       <%= submission.english %>
     </p>
 
+    <p class="submission-answer">
+      <span class="submission-answer-label">Code of Conduct:</span>
+      <%= submission.first_time %>
+    </p>
+
+
     <aside class="aside-widget aside-widget-absolute">
       <%= form_tag(submission_rate_path(submission), class: "submission-rating-form") do %>
         <fieldset class="starability-fade fieldset-inline">

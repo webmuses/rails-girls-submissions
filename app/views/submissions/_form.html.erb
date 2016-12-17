@@ -76,6 +76,21 @@
     </fieldset>
   <% end %>
 
+  <fieldset class="form-field form-field-collection">
+    <legend>
+      Czy akceptujesz nasz Code of Conduct?<br/>
+      <a href="http://theawwwesomes.org/code-of-conduct/" target="_blank">http://theawwwesomes.org/code-of-conduct/</a>
+    </legend>
+    <div>
+      <%= f.radio_button :first_time, true %>
+      <%= f.label :first_time, "Tak",  value: true %>
+    </div>
+    <div>
+      <%= f.radio_button :first_time, false %>
+      <%= f.label :first_time, "Nie",  value: false %>
+    </div>
+  </div>
+
   <div class="form-field">
     <%= f.submit "Wyślij zgłoszenie", class: "btn-small" %>
   </div>
