@@ -53,6 +53,29 @@
     </div>
   </fieldset>
 
+  <% Submission::SKILLS.each do |skill, name| %>
+    <fieldset class="form-field form-field-collection">
+      <legend>Czy znasz <%= name %>?</legend>
+
+      <div>
+        <%= f.radio_button skill, :never %>
+        <%= f.label skill, "Nie", value: "never" %>
+      </div>
+      <div>
+        <%= f.radio_button skill, :heard %>
+        <%= f.label skill, "Coś kojarzę", value: "heard" %>
+      </div>
+      <div>
+        <%= f.radio_button skill, :used %>
+        <%= f.label skill, "Trochę znam", value: "used" %>
+      </div>
+      <div>
+        <%= f.radio_button skill, :fluent %>
+        <%= f.label skill, "Znam",  value: "fluent" %>
+      </div>
+    </fieldset>
+  <% end %>
+
   <div class="form-field">
     <%= f.submit "Wyślij zgłoszenie", class: "btn-small" %>
   </div>

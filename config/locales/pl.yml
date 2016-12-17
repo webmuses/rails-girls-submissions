@@ -17,12 +17,23 @@ pl:
               blank: jest wymagane
             goals:
               blank: jest wymagany
+              too_long: jest za długi (maksymalnie %{count} znaków)
             description:
               blank: jest wymagany
+              too_long: jest za długi (maksymalnie %{count} znaków)
             english:
               blank: jest wymagany
+            css:
+              blank: jest wymagana
+            html:
+              blank: jest wymagana
+            js:
+              blank: jest wymagana
+            programming_others:
+              blank: jest wymagana
             email:
               invalid: jest nieprawidłowy
+              taken: został już użyty podczas rejestracji
     models:
       submission: Zgłoszenie
     attributes:
@@ -32,6 +43,10 @@ pl:
         goals: Cel
         description: Opis
         english: Poziom angielskiego
+        css: 'Znajomość CSS'
+        html: 'Znajomość HTML'
+        programming_others: 'Znajomość innych języków programowania'
+        js: 'Znajomość JavaScriptu'
   date:
     abbr_day_names:
     - nie

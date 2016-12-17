@@ -2,6 +2,7 @@ class SubmissionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create, :thank_you]
   layout 'dashboard', only: [:all, :rated, :to_rate, :rejected, :results]
 
+
   def all
     submissions = Submission.all
 
@@ -90,7 +91,8 @@ class SubmissionsController < ApplicationController
 
   private
     def submission_params
-      params.require(:submission).permit(:full_name, :email, :age, :description, :english, :goals)
+      params.require(:submission).permit(:full_name, :email, :age, :description, :english, :goals,
+                                         :html, :css, :js, :programming_others)
     end
 
     def create_rate_presenters(rates)
