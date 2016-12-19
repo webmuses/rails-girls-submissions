@@ -1,7 +1,11 @@
 $input-height: $bs2;
 
 .form {
-  margin: 2 * $input-height 0;
+  margin: $input-height 0;
+
+  @include media($tablet) {
+    margin: 2 * $input-height 0;
+  }
 }
 
 .form-centered {

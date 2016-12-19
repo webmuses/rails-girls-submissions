@@ -22,8 +22,12 @@ h2 {
 }
 
 h1 {
-  font-size: $bs2;
+  font-size: $bs1;
   font-weight: 700;
+
+  @include media($tablet) {
+    font-size: $bs2;
+  }
 }
 
 h2 {
