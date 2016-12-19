@@ -1,3 +1,18 @@
+.awwwesome-bg {
+  background-image: image-url('bg.svg'), image-url('bg.svg');
+  background-size: 100% auto, 100% auto;
+  background-repeat: repeat-y, repeat-y;
+  background-position: -90vw 100%, 90vw 100%;
+
+  @include media($tablet) {
+    background-position: -80vw 100%, 80vw 100%;
+  }
+
+  @include media($big-screen) {
+    background: none;
+  }
+}
+
 .l-static-container-whole {
   width: 100vw;
   height: 100vh;
