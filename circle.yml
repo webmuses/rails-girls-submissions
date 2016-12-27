@@ -9,4 +9,4 @@ deployment:
   demo:
     branch: master
     commands:
-        - bundle exec cap production deploy
+        - bundle exec cap demo deploy

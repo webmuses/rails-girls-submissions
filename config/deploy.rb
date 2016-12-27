@@ -16,11 +16,9 @@
 # require "honeybadger/capistrano"
 
 set :application, "railsgirls"
-server "railsgirls.demo.llp.pl", user: "lunar", roles: %w{web app db}, port: 20003
-set :port, 20003
 set :branch, "master"
 
-set :repo_url, "git@github.com:LunarLogic/rails-girls-submissions.git"
+set :repo_url, "https://github.com/LunarLogic/rails-girls-submissions.git"
 set :deploy_via, :remote_cache
 set :copy_exclude, [".git"]
 
