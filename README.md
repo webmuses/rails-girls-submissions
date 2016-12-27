@@ -17,10 +17,10 @@
 
  * CI: https://circleci.com/gh/LunarLogic/rails-girls-submissions
 
-#### Demo server
+#### Public Demo
 
  * git branch: `master`
- * site url: http://railsgirls.demo.llp.pl/
+ * site url: https://railsgirls.lunarlogic.io/admin
 
  __Deployment happens automatically after each successful CI build.__
 
