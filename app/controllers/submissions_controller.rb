@@ -76,7 +76,8 @@ class SubmissionsController < ApplicationController
 
       redirect_to submissions_thank_you_url
     else
-      render :new, locals: { submission: submission }
+      footer_presenter = FooterPresenter.new(Setting.get)
+      render :new, locals: { submission: submission, footer_presenter: footer_presenter }
     end
   end
 
